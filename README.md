@@ -29,7 +29,7 @@
 
         html
           - run compileSass and assets tasks
-          - concat, minify css and js then copy to dist folder
+          - concat, minify all css and js files then copy to dist folder
 
         watchFiles
           - run html in case changes to sass or js
@@ -60,7 +60,7 @@
 
 # DOING:
 
-    do we need to add jQuery to the sites project files? 
+    do we need to add jQuery to the sites project files?
 
     update gulp assets task
       compress images and font files for production
