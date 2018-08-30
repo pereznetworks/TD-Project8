@@ -19,7 +19,7 @@
 
 # DONE:  
 
-    gulp tasks
+    Setup build and workflow using gulp tasks:
 
         compileSass
           - compile sass into css
@@ -42,11 +42,14 @@
           - same as html task
           - but runs clean first
 
-    Setup build process and development work-flow using Node.js, NPM
-     and Gulp modules
-     ...concat, sass, sourcemaps, rename, uglify, csso and gulp-useref
+    Setup build process and development work-flow using:
 
-    Prep for project
+      - Node.js, NPM and Gulp
+      - gulp modules  
+        concat, sass, sourcemaps, rename, uglify, csso,
+          gulp-useref and serve
+
+    Prep for project:
 
       reviewed...
         project instructions and exceeds speqs.
@@ -56,6 +59,8 @@
     Will be going for Exceeds in this project
 
 # DOING:
+
+    do we need to add jQuery to the sites project files? 
 
     update gulp assets task
       compress images and font files for production
