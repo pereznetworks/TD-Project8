@@ -19,9 +19,12 @@
 
 # DONE:  
 
-    Setup 'live' development workflow
+    Setup 'live' development workflow task
 
-     using watch tasks and gulp-serve 
+        gulp serve
+          - using 'dist' folder root 
+          - runs a simple http development server
+          - if watchFiles is run, restart server
 
     Setup build and workflow using gulp tasks:
 
@@ -37,10 +40,6 @@
 
         watchFiles
           - run html in case changes to sass or js
-
-        serve
-          - run http development server
-          - restart server if watchFiles is run
 
         build
           - same as html task
