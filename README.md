@@ -17,7 +17,30 @@
       All output for the build process should be in a dist folder
        for distribution or deployment.
 
-# TASKS COMPLETE:  
+# DONE:  
+
+    gulp tasks
+
+        compileSass
+          - compile sass into css
+
+        assets
+          - copy assets to dist folder
+
+        html
+          - run compileSass and assets tasks
+          - concat, minify css and js then copy to dist folder
+
+        watchFiles
+          - run html in case changes to sass or js
+
+        serve
+          - run http development server
+          - restart server if watchFiles is run
+
+        build
+          - same as html task
+          - but runs clean first
 
     Setup build process and development work-flow using Node.js, NPM
      and Gulp modules
@@ -34,7 +57,10 @@
 
 # DOING:
 
-    finishing gulp tasks
+    update gulp assets task
+      compress images and font files for production
+
+    verify what is needed for 'meets expectations'
 
 # TODO:
 
