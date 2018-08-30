@@ -19,6 +19,10 @@
 
 # DONE:  
 
+    Setup 'live' development workflow
+
+     using watch tasks and gulp-serve 
+
     Setup build and workflow using gulp tasks:
 
         compileSass
@@ -71,6 +75,5 @@
 
     migrate to gulp v4
       need to update or replace anything that relies on gulp.util
-
-    Setup 'live' development workflow
-     using watch tasks, gulp-useref, and build tags in the index.html
+      otherwise when cloning git repo and running straight npm install
+        some stuff will be broken
