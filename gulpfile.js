@@ -7,6 +7,7 @@
 
 "use strict";
 
+// requiring needed modules
   const gulp = require('gulp'),
          del = require('del'),
       rename = require('gulp-rename'),
@@ -17,9 +18,9 @@
          iff = require('gulp-if'),
         csso = require('gulp-csso');
 
+// vars for src and dist folder paths
 const options = { src: 'src', dist: 'dist'};
 
-// prep css for production
 // compile sass into css,
 // copy to /dist/css folder,
 // save global.css and map.css
@@ -43,9 +44,10 @@ gulp.task('js', function() {
     .pipe(gulp.dest(options.dist));
 });
 
-// prep js files for production
+// prep js and css files for production
 // run compileSass
-// use build refs found in index.html, minifying all js and css
+// use build refs found in index.html
+// minifying all js and css
 // copy to /dist folder
 gulp.task('html', ['compileSass'], function() {
   gulp.src(options.src + '/index.html')
