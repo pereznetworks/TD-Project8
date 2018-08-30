@@ -19,6 +19,10 @@
 
 # TASKS COMPLETE:  
 
+    Setup build process and development work-flow using Node.js, NPM
+     and Gulp modules
+     ...concat, sass, sourcemaps, rename, uglify, csso and gulp-useref
+
     Prep for project
 
       reviewed...
@@ -30,11 +34,12 @@
 
 # DOING:
 
-    Setup build process and development work-flow using Node.js, NPM
-     and Gulp modules
-     ...concat, sass, sourcemaps, rename, uglify, csso and gulp-useref
+    finishing gulp tasks
 
 # TODO:
+
+    migrate to gulp v4
+      need to update or replace anything that relies on gulp.util
 
     Setup 'live' development workflow
      using watch tasks, gulp-useref, and build tags in the index.html
