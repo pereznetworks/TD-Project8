@@ -17,5 +17,5 @@
 
 # TODO:
 
-   Setup 'live' development workflow
+    Setup 'live' development workflow
      using watch tasks, gulp-useref, and build tags in the index.html
