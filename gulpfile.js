@@ -16,7 +16,8 @@
       uglify = require('gulp-uglify'),
       useref = require('gulp-useref'),
          iff = require('gulp-if'),
-        csso = require('gulp-csso');
+        csso = require('gulp-csso'),
+       serve = require('gulp-serve');
 
 // vars for src and dist folder paths
 const options = { src: 'src', dist: 'dist'};
@@ -32,24 +33,19 @@ gulp.task('compileSass', function() {
       .pipe(gulp.dest(`${options.src}/css`));
 });
 
-// js task
-// run by watch task when there are changes
-// concat and minify js files for production
-// use build refs found in index.html, minifying all js
-// copy to /dist folder
-gulp.task('js', function() {
-  gulp.src(options.src + '/index.html')
-    .pipe(useref())
-    .pipe(iff(`*.js`, uglify()))
-    .pipe(gulp.dest(options.dist));
+// optimize and/or compress asset files, images and icons for production
+// for now were just copying the files
+gulp.task("assets", function() {
+  return gulp.src([ options.src + '/images/**', options.src + '/icons/**'], { base: './' + options.src })
+            .pipe(gulp.dest(`${options.dist}`));
 });
 
 // prep js and css files for production
 // run compileSass
 // use build refs found in index.html
-// minifying all js and css
+// concat and minify all js and css
 // copy to /dist folder
-gulp.task('html', ['compileSass'], function() {
+gulp.task('html', ['compileSass', 'assets'], function() {
   gulp.src(options.src + '/index.html')
     .pipe(useref())
     .pipe(iff('*.js', uglify()))
@@ -62,13 +58,14 @@ gulp.task('clean', function() {
   del([options.dist, options.dist + '/css/global.css*', options.dist + '/js/app*.js*']);
 });
 
-// build task
-// run html task, then
-// will be compressing image and icon files for producton
-// copy to /dist folder
-gulp.task("build", ['html'], function() {
-  return gulp.src([ `${options.src}/images/**`, `${options.src}/icons/**`], { base: `${options.src}/`})
-            .pipe(gulp.dest(options.dist));
+// build task, same as html task
+// but runs clean task first
+gulp.task("build",  ['clean', 'compileSass', 'assets'], function() {
+  gulp.src(options.src + '/index.html')
+    .pipe(useref())
+    .pipe(iff('*.js', uglify()))
+    .pipe(iff('*.css', csso()))
+    .pipe(gulp.dest(`${options.dist}`));
 });
 
 // default task
@@ -82,13 +79,11 @@ gulp.task("default", ["clean"], function() {
 // watch for changes to scss and js files
 // when changes found run compileSass or js task, respectively
 gulp.task('watchFiles', function() {
-  gulp.watch(options.src + '/sass/**/*.scss', ['compileSass']);
-  gulp.watch(options.src + '/js/**/*.js', ['js']);
+  gulp.watch(options.src + '/sass/**/*.scss', ['html']);
+  gulp.watch(options.src + '/js/**/*.js', ['html']);
 })
 
 // serve task
 // when watchFiles task runs
 // restart server
-gulp.task('serve', ['watchFiles'], function () {
-  // code to run build vs pro server here
-});
+gulp.task('serve', ['watchFiles'], serve(options.dist));
