@@ -1,7 +1,7 @@
 {
   "name": "TD-Project8",
   "version": "1.0.0",
-  "description": "Prep for project",
+  "description": "Using Gulp to Build a Front-End Site",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -18,14 +18,14 @@
   },
   "homepage": "https://github.com/pereznetworks/TD-Project8#readme",
   "devDependencies": {
-  "del": "^1.2.0",
-  "gulp": "^3.8.11",
-  "gulp-csso": "^3.0.1",
-  "gulp-if": "^2.0.2",
-  "gulp-rename": "^1.2.2",
-  "gulp-sass": "^2.0.1",
-  "gulp-sourcemaps": "^1.5.2",
-  "gulp-uglify": "^1.2.0",
-  "gulp-useref": "^3.1.5"
+    "del": "^1.2.0",
+    "gulp": "^3.8.11",
+    "gulp-csso": "^3.0.1",
+    "gulp-if": "^2.0.2",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^2.0.1",
+    "gulp-sourcemaps": "^1.5.2",
+    "gulp-uglify": "^1.2.0",
+    "gulp-useref": "^3.1.5"
   }
 }
