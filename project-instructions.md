@@ -1,4 +1,4 @@
-# Summary
+# Summary:
 
   In this project you’ll be provided a website with
    HTML, SCSS, JPEGs, PNGs and JavaScript files.
@@ -14,7 +14,7 @@
   Compress any JPEG or PNG files
   All output for the build process should be in a dist folder for distribution or deployment.
 
-# Before you start
+# Before you start:
 
   To prepare for this project you'll need to make sure you complete and understand these steps.
 
@@ -52,7 +52,7 @@
        but you will need to copy this folder over
         to the dist directory for the final build
 
-# Project Instructions
+# Project Instructions:
 
   To complete this project, follow the instructions below.
     If you get stuck, ask a question in the community.
@@ -94,7 +94,7 @@
       at the command line to run the build task
         and serve my project using a local web server.
 
-# Extra Credit
+# Extra Credit:
 
   To get an "exceeds" rating, you can expand on the project in the following ways:
 
