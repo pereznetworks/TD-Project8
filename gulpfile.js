@@ -34,7 +34,8 @@ gulp.task('compileSass', function() {
 });
 
 // optimize and/or compress asset files, images and icons for distribution
-// for now were just copying the files
+// for now were just copying the files to /dist
+// overwrite if any alreadt exist
 gulp.task("images", function() {
   return gulp.src([ options.src + '/images/*.jpg', options.src + '/images/*.png', options.src + '/icons/**'], { base: './' + options.src })
             .pipe(gulp.dest(`${options.dist}`));
@@ -44,7 +45,7 @@ gulp.task("images", function() {
 // run compileSass
 // use build refs found in index.html
 // concat and minify all css
-// copy to /dist folder
+// copy to /dist folder and overwrite if any exist
 gulp.task('styles',['compileSass'], function() {
   gulp.src(options.src + '/index.html')
     .pipe(useref())
@@ -56,7 +57,7 @@ gulp.task('styles',['compileSass'], function() {
 // run compileSass
 // use build refs found in index.html
 // concat and minify all js
-// copy to /dist folder
+// copy to /dist folder and overwrite if any exist
 gulp.task('scripts', function() {
   gulp.src(options.src + '/index.html')
     .pipe(useref())
@@ -65,7 +66,7 @@ gulp.task('scripts', function() {
 });
 
 // in case any changes to src/index.html
-// can run this task copy to, overwrite the distribution version
+// can run this task copy to /dist, overwrite if /dist/index.html exists
 gulp.task("html", function() {
   return gulp.src([ options.src + '/images/index.html'], { base: './' + options.src })
             .pipe(gulp.dest(`${options.dist}`));
@@ -86,8 +87,8 @@ gulp.task("build",  ['clean', 'images'], function() {
 });
 
 // watchFiles task
-// watch for changes to scss and js files
-// when changes found run compileSass or js task, respectively
+// watch for changes to html, image files, scss and js files
+// when a change is detected run appropriate task
 gulp.task('watchFiles', function() {
   gulp.watch(options.src + '/index.html', ['html']);
   gulp.watch(options.src + '/images/**/**', ['images']);
@@ -96,11 +97,12 @@ gulp.task('watchFiles', function() {
 })
 
 // serve task
-// when watchFiles task runs
-// restart server
+// runs the build task
+// runs watchFiles task
+// starts a server
+// if watchFiles runs any tasks, server is restarted
 gulp.task('serve', ['build','watchFiles'], serve(options.dist));
 
 // default task
-// run clean task first
-// and then run serve
+// and then run serve task
 gulp.task("default", ["serve"]);
