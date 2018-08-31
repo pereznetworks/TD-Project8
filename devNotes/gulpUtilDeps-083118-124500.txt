@@ -1,0 +1,10 @@
+TD-Project8@1.0.0 /Users/danielperez/Dropbox/TechDegree/TD-Project8
+├─┬ gulp@3.9.1
+│ └── gulp-util@3.0.8 
+├─┬ gulp-sass@2.3.2
+│ └── gulp-util@3.0.8  deduped
+├─┬ gulp-serve@1.4.0
+│ └── gulp-util@3.0.8  deduped
+└─┬ gulp-uglify@1.2.0
+  └── gulp-util@3.0.8  deduped
+
