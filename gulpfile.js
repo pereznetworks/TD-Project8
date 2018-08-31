@@ -33,24 +33,42 @@ gulp.task('compileSass', function() {
       .pipe(gulp.dest(`${options.src}/css`));
 });
 
-// optimize and/or compress asset files, images and icons for production
+// optimize and/or compress asset files, images and icons for distribution
 // for now were just copying the files
-gulp.task("assets", function() {
-  return gulp.src([ options.src + '/images/**', options.src + '/icons/**'], { base: './' + options.src })
+gulp.task("images", function() {
+  return gulp.src([ options.src + '/images/*.jpg', options.src + '/images/*.png', options.src + '/icons/**'], { base: './' + options.src })
             .pipe(gulp.dest(`${options.dist}`));
 });
 
-// prep js and css files for production
+// prep SASS files for distribution
 // run compileSass
 // use build refs found in index.html
-// concat and minify all js and css
+// concat and minify all css
 // copy to /dist folder
-gulp.task('html', ['compileSass', 'assets'], function() {
+gulp.task('styles',['compileSass'], function() {
+  gulp.src(options.src + '/index.html')
+    .pipe(useref())
+    .pipe(iff('*.css', csso()))
+    .pipe(gulp.dest(`${options.dist}`));
+});
+
+// prep JavaScript files for distribution
+// run compileSass
+// use build refs found in index.html
+// concat and minify all js
+// copy to /dist folder
+gulp.task('scripts', function() {
   gulp.src(options.src + '/index.html')
     .pipe(useref())
     .pipe(iff('*.js', uglify()))
-    .pipe(iff('*.css', csso()))
     .pipe(gulp.dest(`${options.dist}`));
+});
+
+// in case any changes to src/index.html
+// can run this task copy to, overwrite the distribution version
+gulp.task("html", function() {
+  return gulp.src([ options.src + '/images/index.html'], { base: './' + options.src })
+            .pipe(gulp.dest(`${options.dist}`));
 });
 
 // remove the /dist folder and everything in it
@@ -58,28 +76,29 @@ gulp.task('clean', function() {
   del([options.dist, options.dist + '/css/global.css*', options.dist + '/js/app*.js*']);
 });
 
-// build task, same as html task
-// but runs clean task first
-gulp.task("build",  ['clean', 'compileSass', 'assets'], function() {
-  gulp.src(options.src + '/index.html')
-    .pipe(useref())
-    .pipe(iff('*.js', uglify()))
-    .pipe(iff('*.css', csso()))
-    .pipe(gulp.dest(`${options.dist}`));
+// build task, compileSass tasks first
+// then run other tasks to prep src files for distribution
+gulp.task("build",  ['clean', 'images'], function() {
+  gulp.task('html');
+  gulp.task('scripts');
+  gulp.task('styles');
+  gulp.task('assets');
 });
 
 // watchFiles task
 // watch for changes to scss and js files
 // when changes found run compileSass or js task, respectively
 gulp.task('watchFiles', function() {
-  gulp.watch(options.src + '/sass/**/*.scss', ['html']);
-  gulp.watch(options.src + '/js/**/*.js', ['html']);
+  gulp.watch(options.src + '/index.html', ['html']);
+  gulp.watch(options.src + '/images/**/**', ['images']);
+  gulp.watch(options.src + '/sass/**/*.scss', ['styles']);
+  gulp.watch(options.src + '/js/**/*.js', ['scripts']);
 })
 
 // serve task
 // when watchFiles task runs
 // restart server
-gulp.task('serve', ['html','watchFiles'], serve(options.dist));
+gulp.task('serve', ['build','watchFiles'], serve(options.dist));
 
 // default task
 // run clean task first

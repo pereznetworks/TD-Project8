@@ -59,21 +59,21 @@
 
   8 steps
 
-    As a developer, I should be able to run the npm install command
+    As a developer, I should be able to run the NPM INSTALL command
      to install all of the dependencies for the build process.
 
-    As a developer, I should be able to run the gulp scripts command
-     at the command line to concatenate, minify, and copy
-      all of the project’s JavaScript files into an all.min.js file
+    As a developer, I should be able to run the GULP SCRIPTS command
+     at the command line to CONCATENATE, MINIFY, and copy
+      all of the project’s JavaScript files into an ALL.MIN.JS file
        that is then copied to the dist/scripts folder.
 
-    As a developer, I should be able to run the gulp styles command
+    As a developer, I should be able to run the GULP STYLES command
      at the command line to compile the project’s SCSS files into CSS,
-     then concatenate and minify into an all.min.css file
+     then CONCATENATE AND MINIFY into an ALL.MIN.CSS file
       that is then copied to the dist/styles folder.
 
-    As a developer, when I run the gulp scripts or gulp styles commands
-     at the command line, source maps are generated for the JavaScript
+    As a developer, when I run the gulp scripts or GULP STYLES commands
+     at the command line, SOURCE MAPS are generated for the JavaScript
      and CSS files respectively.
 
     As a developer, I should be able to run the gulp images command
@@ -81,7 +81,7 @@
       and PNG files, and then copy those optimized images to the
       dist/content folder.
 
-    As a developer, I should be able to run the gulp clean command
+    As a developer, I should be able to run the GULP CLEAN command
      at the command line to delete all of the files
       and folders in the dist folder.
 
