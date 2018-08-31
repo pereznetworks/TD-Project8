@@ -71,12 +71,15 @@
 
 # DOING:
 
-    do we need to add jQuery to the sites project files?
+    do we need to add jQuery to the sites project files
+      if so, can gulp check for latest jquery
+        and place a min version of it in /dist/js folder
+        and place link to in html folder?
 
     update gulp assets task
       compress images and font files for production
 
-    verify what is needed for 'meets expectations'
+    review/verify what is needed for 'meets expectations' and 'exceeds'
 
 # TODO:
 
