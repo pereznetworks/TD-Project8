@@ -68,13 +68,6 @@ gulp.task("build",  ['clean', 'compileSass', 'assets'], function() {
     .pipe(gulp.dest(`${options.dist}`));
 });
 
-// default task
-// run clean task first
-// and then run build task
-gulp.task("default", ["clean"], function() {
-  gulp.start('build');
-});
-
 // watchFiles task
 // watch for changes to scss and js files
 // when changes found run compileSass or js task, respectively
@@ -86,4 +79,9 @@ gulp.task('watchFiles', function() {
 // serve task
 // when watchFiles task runs
 // restart server
-gulp.task('serve', ['watchFiles'], serve(options.dist));
+gulp.task('serve', ['html','watchFiles'], serve(options.dist));
+
+// default task
+// run clean task first
+// and then run serve
+gulp.task("default", ["serve"]);

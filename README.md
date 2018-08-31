@@ -19,12 +19,20 @@
 
 # DONE:  
 
-    Setup 'live' development workflow task
+    Make the serve task the default task
+
+        gulp
+          default task - runs serve task
+
+    Setup 'live' development workflow
 
         gulp serve
-          - using 'dist' folder root 
+          - runs build first
+          - runs watchFiles first
+          - using 'dist' folder root
           - runs a simple http development server
-          - if watchFiles is run, restart server
+          - if watchFiles detects and runs associated tasks again
+             restart server
 
     Setup build and workflow using gulp tasks:
 
