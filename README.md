@@ -71,6 +71,22 @@
 
 # DOING:
 
+    migrate to gulp v4
+      need to update or replace anything that relies on gulp.util
+      otherwise when cloning git repo and running straight npm install
+        some stuff will be broken
+
+      steps: uninstalled all dev deps
+      ```
+          ~TD-Project$ npm i npm
+          ~TD-Project$ npm i del -save-dev
+          ~TD-Project$ npm i gulp@4.0.0 -save-dev
+              // have to specify the version #
+              // otherwise get vulnerability warnings
+      ```
+
+# TODO:
+
     do we need to add jQuery to the sites project files
       if so, can gulp check for latest jquery
         and place a min version of it in /dist/js folder
@@ -80,10 +96,3 @@
       compress images and font files for production
 
     review/verify what is needed for 'meets expectations' and 'exceeds'
-
-# TODO:
-
-    migrate to gulp v4
-      need to update or replace anything that relies on gulp.util
-      otherwise when cloning git repo and running straight npm install
-        some stuff will be broken

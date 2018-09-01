@@ -16,8 +16,7 @@
       uglify = require('gulp-uglify'),
       useref = require('gulp-useref'),
          iff = require('gulp-if'),
-        csso = require('gulp-csso'),
-       serve = require('gulp-serve');
+        csso = require('gulp-csso');
 
 // vars for src and dist folder paths
 const options = { src: 'src', dist: 'dist'};
@@ -101,7 +100,9 @@ gulp.task('watchFiles', function() {
 // runs watchFiles task
 // starts a server
 // if watchFiles runs any tasks, server is restarted
-gulp.task('serve', ['build','watchFiles'], serve(options.dist));
+gulp.task('serve', ['build','watchFiles'], functon(){
+  // place call to gulp connect here 
+});
 
 // default task
 // and then run serve task
