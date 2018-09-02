@@ -30,7 +30,7 @@
        90% of all gulp 'server' modules still use gulp.util
        and have not fixed or addresses vulnerabilities
 
-      updated to latest for all othewr required gulp modules,
+      updated to latest for all other required gulp modules,
        I am using...
         concat, sass, sourcemaps, rename, uglify, csso, gulp-useref
           these have fixed gulp.util vulnerabilities
