@@ -1,3 +1,10 @@
+# NOTE:
+
+    Currently switching to gulp v4 syntax and gulp modiules that have addresses gulp.util dedup issues
+    
+    Using Gulp pre-v4 is not recommeneded due to vulnerabilities in gulp.util, which is a core part of Gulp pre-v4
+    
+
 # Summary:
 
     Using Gulp to Build a Front-End Site
