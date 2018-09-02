@@ -11,19 +11,20 @@
       uglify = require('gulp-uglify'),
          iff = require('gulp-if'),
         csso = require('gulp-csso'),
-     connect = require('gulp-connect');
+     connect = require('gulp-connect'),
+    imagemin = require('gulp-imagemin');
 
 // vars for src and dist folder paths
 const options = { src: 'src', dist: 'dist'};
 
 // optimize and/or compress image files, images and icons for distribution
-// hadnt actually found a gulp module for this one yet...
-// for now were just copying the files to /dist
-// overwrite if any already exist
+// most others dont have any where near the downloads or updates as gulp-imagemin
+// copy to /dist folder, overwrite if any already exist
 // call using gulp.task(images);
 
 function images() {
   return gulp.src([ './src/images/*.jpg', './src/images/*.png'])
+            .pipe(imagemin())
             .pipe(gulp.dest(`./dist/images`))
             .pipe(connect.reload());
 }
