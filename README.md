@@ -29,26 +29,25 @@
 
       updated to latest for all other required gulp modules,
        I am using...
-        concat, sass, sourcemaps, rename, uglify, csso, gulp-useref
+        del, concat, sass, sourcemaps, rename, uglify, csso
           these have fixed gulp.util vulnerabilities
            or have stopped using it
             in their latest version
 
-      will be using gulp.connect to run a live-reload server
+      using gulp.connect to run a live-reload server
       have switched task functions in gulpfile.js to gulp 4 syntax
 
 # DOING:
 
-    migrating to gulp v4
-      switching to series and parallel for build and watch tasks
-      and finish switch to gulp v4 syntax
+      instead of merging with current master branch
+      make this branch 'next version'
 
 # TODO:
 
-    update gulp assets task
-      compress images and font files for production
+      update gulp assets task
+        compress images and font files for production
 
-    review/verify what is needed for 'meets expectations' and 'exceeds'
+      review/verify what is needed for 'meets expectations' and 'exceeds'
 
 # DONE:
 
