@@ -27,7 +27,7 @@
 
       no longer using gulp.serve, latest version and ...
        90% of all gulp 'server' modules still use gulp.util
-       and have not fixed or addresses vulnerabilities
+       and have not fixed or addressed vulnerabilities
 
       updated to latest for all other required gulp modules,
        I am using...
