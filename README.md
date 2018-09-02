@@ -37,6 +37,19 @@
       will be using gulp.connect to run a live-reload server
       have switched task functions in gulpfile.js to gulp 4 syntax
 
+# DOING:
+
+    migrating to gulp v4
+      switching to series and parallel for build and watch tasks
+      and finish switch to gulp v4 syntax
+
+# TODO:
+
+    update gulp assets task
+      compress images and font files for production
+
+    review/verify what is needed for 'meets expectations' and 'exceeds'
+
 # DONE:
 
     Project is complete and working for Gulp v3.9.1
@@ -93,16 +106,3 @@
         and project files
 
     Will be going for Exceeds in this project
-
-# DOING:
-
-    migrating to gulp v4
-      switching to series and parallel for build and watch tasks
-      and finish switch to gulp v4 syntax
-
-# TODO:
-
-    update gulp assets task
-      compress images and font files for production
-
-    review/verify what is needed for 'meets expectations' and 'exceeds'
