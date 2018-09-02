@@ -4,6 +4,7 @@
 // requiring needed modules
   const gulp = require('gulp'),
          del = require('del'),
+      concat = require('gulp-concat'),
       rename = require('gulp-rename'),
         sass = require('gulp-sass'),
         maps = require('gulp-sourcemaps'),
@@ -15,7 +16,7 @@
 // vars for src and dist folder paths
 const options = { src: 'src', dist: 'dist'};
 
-// optimize and/or compress asset files, images and icons for distribution
+// optimize and/or compress image files, images and icons for distribution
 // hadnt actually found a gulp module for this one yet...
 // for now were just copying the files to /dist
 // overwrite if any already exist
@@ -28,45 +29,25 @@ function images() {
 
 images.description = `optimize images files, copy to /dist folder`;
 
-// compile sass into css,
-// copy to /dist/css folder,
-// save global.css and map.css
-// call using gulp.task(compileSass);
+// prep Sass files for distribution
+// compile sass into css
+// minify the css
+// compile a source map file
+// copy to /dist folder and overwrite if any exist
+// call using gulp.task(styles);
 
-function compileSass() {
+function styles() {
   return gulp.src(`./src/sass/global.scss`)
       .pipe(maps.init())
       .pipe(sass())
+      .pipe(concat('global.css'))
+      .pipe(iff('*.css', csso()))
       .pipe(maps.write('./'))
-      .pipe(gulp.dest(`./src/css`));
+      .pipe(gulp.dest(`./dist/css`));
 }
 
-compileSass.discription = `using build ref, compile sass into css, a map file, copy to /dist/css folder`;
+styles.description = `compile sass, minify css and compile a map file, copy to /dist folder`;
 
-// prep SASS files for distribution
-// run compileSass
-// use build refs found in index.html
-// concat and minify all css
-// copy to /dist folder and overwrite if any exist
-// call using gulp.task(minifyCSS);
-
-function minifyCSS() {
-  return gulp.src('./src/index.html')
-    .pipe(useref())
-    .pipe(iff('*.css', csso()))
-    .pipe(gulp.dest(`./dist/css`));
-}
-
-minifyCSS.description = `using build ref, run compileSass, map and minify, copy to /dist folder`;
-
-// series task for sass, css files
-// note:  have to pass (done) and call function done() to signal async completion
-function styles(done){
-  gulp.series(compileSass, minifyCSS);
-  done();
-}
-
-styles.description = `run compileSass and minifyCSS functions`;
 // prep JavaScript files for distribution
 // run compileSass
 // use build refs found in index.html
@@ -75,8 +56,8 @@ styles.description = `run compileSass and minifyCSS functions`;
 // call using gulp.task(scripts);
 
 function scripts() {
-  return gulp.src('./src/index.html')
-    .pipe(useref())
+  return gulp.src('./src/js/**/*.js')
+    .pipe(concat('global.js'))
     .pipe(iff('*.js', uglify()))
     .pipe(gulp.dest(`./dist/js`));
 }
@@ -99,12 +80,9 @@ updateHTML.description = `update /dist version of html`;
 // note:  have to pass (done) and call function done() to signal async completion
 // call using gulp.task(build);
 
-function build(done) {
-  gulp.series(compileSass, styles, scripts, images, updateHTML);
-  done();
-}
+var build = gulp.series(clean, styles, scripts, images, updateHTML);
 
-build.description = `run all /dist prep tasks`;
+// build.description = `run all /dist prep tasks`;
 
 // watchFiles task
 // watch for changes to html, image files, scss and js files
@@ -139,12 +117,12 @@ clean.description = `remove the /dist folder and everything in it`;
 
 // declaring tasks that can called from the commandline
 // usage: gulp exportedFunctionName
-exports.updateHTML = updateHTML;
 exports.images = images;
-exports.clean = clean;
 exports.styles = styles;
 exports.scripts = scripts;
+exports.updateHTML = updateHTML;
 exports.watchFiles = watchFiles;
+exports.clean = clean;
 exports.build = build;
 
 // default task
