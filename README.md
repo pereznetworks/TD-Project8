@@ -19,6 +19,24 @@
 
 # DONE:  
 
+    Changes for gulp v4...
+
+      gulp.util deprecated in gulp v4
+      https://medium.com/gulpjs/gulp-util-ca3b1f9f9ac5
+      breaks all modules that depend on it
+      see ./gulpUtildeps.txt
+
+      no longer using gulp.serve,
+       this and 90% of all gulp 'server' modules still use gulp.util
+       and have not fixed vulnerabilites
+
+      all other required gulp modules, using latest version, have fixed gulp.util vulnerabilites or have stopped using it
+
+      am now using gulp.connect to run a live-reload server
+      switched to gulp 4 syntax for task functions
+
+    Added jquery.min.js link to index.html and jquery.min.js to src files 
+
     Make the serve task the default task
 
         gulp
@@ -71,26 +89,11 @@
 
 # DOING:
 
-    migrate to gulp v4
-      need to update or replace anything that relies on gulp.util
-      otherwise when cloning git repo and running straight npm install
-        some stuff will be broken
-
-      steps: uninstalled all dev deps
-      ```
-          ~TD-Project$ npm i npm
-          ~TD-Project$ npm i del -save-dev
-          ~TD-Project$ npm i gulp@4.0.0 -save-dev
-              // have to specify the version #
-              // otherwise get vulnerability warnings
-      ```
+    migrating to gulp v4
+      switching to series and parrallel for build and watch tasks
+      and finish switch to gulp v4 syntax
 
 # TODO:
-
-    do we need to add jQuery to the sites project files
-      if so, can gulp check for latest jquery
-        and place a min version of it in /dist/js folder
-        and place link to in html folder?
 
     update gulp assets task
       compress images and font files for production
