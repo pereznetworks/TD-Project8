@@ -26,16 +26,24 @@
       breaks all modules that depend on it
       see ./gulpUtildeps.txt
 
-      no longer using gulp.serve,
-       this and 90% of all gulp 'server' modules still use gulp.util
-       and have not fixed vulnerabilites
+      no longer using gulp.serve, latest version and ...
+       90% of all gulp 'server' modules still use gulp.util
+       and have not fixed or addresses vulnerabilities
 
-      all other required gulp modules, using latest version, have fixed gulp.util vulnerabilites or have stopped using it
+      updated to latest for all othewr required gulp modules,
+       I am using...
+        concat, sass, sourcemaps, rename, uglify, csso, gulp-useref
+          these have fixed gulp.util vulnerabilities
+           or have stopped using it
+            in their latest version
 
       am now using gulp.connect to run a live-reload server
-      switched to gulp 4 syntax for task functions
+      switched task functions in gulpfile.js to gulp 4 syntax
 
-    Added jquery.min.js link to index.html and jquery.min.js to src files 
+    Project is complete and working for Gulp v3.9.1
+         research gulp.util dedup issues
+
+    Added jquery.min.js link to index.html and jquery.min.js to src files
 
     Make the serve task the default task
 
@@ -90,7 +98,7 @@
 # DOING:
 
     migrating to gulp v4
-      switching to series and parrallel for build and watch tasks
+      switching to series and parallel for build and watch tasks
       and finish switch to gulp v4 syntax
 
 # TODO:
