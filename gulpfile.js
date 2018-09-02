@@ -92,11 +92,12 @@ var build = gulp.series(clean, styles, scripts, images, updateHTML);
 // when a change is detected run appropriate task
 // call using gulp.task('watchFiles');
 
-function watchFiles() {
+function watchFiles(done) {
   gulp.watch('./src/index.html', updateHTML);
   gulp.watch('./src/images/**/**', images);
   gulp.watch('./src/sass/**/*.scss', styles);
   gulp.watch('./src/js/**/*.js', scripts);
+  done();
 }
 
 watchFiles.description = `watch for change to any src files, if so, run respective dist prep task`;
@@ -118,7 +119,7 @@ function runServer(done) {
 
 runServer.description = `run a server with ./dist as root`;
 
-var server = gulp.series(runServer, watchFiles);
+var liveReloadServer = gulp.series(runServer, watchFiles);
 
 // remove the /dist folder and everything in it
 // call using gulp.task('clean');
@@ -138,8 +139,9 @@ exports.updateHTML = updateHTML;
 exports.watchFiles = watchFiles;
 exports.clean = clean;
 exports.build = build;
+exports.liveReloadServer = liveReloadServer;
 exports.runServer = runServer;
 
 // default task
 // TODO: for now is the build task, but will be server live-reload task
-gulp.task("default", server);
+gulp.task("default", liveReloadServer);
