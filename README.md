@@ -24,7 +24,6 @@
       gulp.util deprecated in gulp v4
       https://medium.com/gulpjs/gulp-util-ca3b1f9f9ac5
       breaks all modules that depend on it
-      see ./gulpUtildeps.txt
 
       no longer using gulp.serve, latest version and ...
        90% of all gulp 'server' modules still use gulp.util
