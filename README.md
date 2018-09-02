@@ -5,7 +5,7 @@
     Since gulp.util is a core part of Gulp pre-v4
         Using Gulp pre-v4 is not recommeneded due to gulp-util's very-outdated deps and vulnerabilities
     
-    see issue #1: migrate to gulp v4 for updates on migration 
+    see issue #1: migrate to gulp v4 for updates on the migration 
     
 # Summary:
 
