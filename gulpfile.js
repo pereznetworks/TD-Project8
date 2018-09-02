@@ -75,10 +75,9 @@ function updateHTML() {
 
 updateHTML.description = `update /dist version of html`;
 
-// build task, compileSass tasks first
-// then run other tasks to prep src files for distribution
-// note:  have to pass (done) and call function done() to signal async completion
-// call using gulp.task(build);
+// build task, run these task 1 after the other
+// waiting for each to complete before continuing
+// clean task is the only task that be completed before the others begin
 
 var build = gulp.series(clean, styles, scripts, images, updateHTML);
 
@@ -96,7 +95,7 @@ function watchFiles() {
   gulp.watch('./src/js/**/*.js', scripts);
 }
 
-watchFiles = `watch for change to any src files, if so, run respective dist prep task`;
+watchFiles.description = `watch for change to any src files, if so, run respective dist prep task`;
 
 // a server task
 // runs the build task
