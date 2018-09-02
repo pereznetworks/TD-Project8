@@ -17,9 +17,7 @@
       All output for the build process should be in a dist folder
        for distribution or deployment.
 
-# DONE:  
-
-    Changes for gulp v4...
+# CHANGES for GULP v4:
 
       gulp.util deprecated in gulp v4
       https://medium.com/gulpjs/gulp-util-ca3b1f9f9ac5
@@ -38,6 +36,8 @@
 
       will be using gulp.connect to run a live-reload server
       have switched task functions in gulpfile.js to gulp 4 syntax
+
+# DONE:
 
     Project is complete and working for Gulp v3.9.1
          research gulp.util dedup issues
