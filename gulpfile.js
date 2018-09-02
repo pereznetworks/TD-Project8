@@ -23,7 +23,7 @@ const options = { src: 'src', dist: 'dist'};
 // call using gulp.task(images);
 
 function images() {
-  return gulp.src([ './src/images/*.jpg', './src/images/*.png'])
+  return gulp.src([ './src/images/*'])
             .pipe(imagemin())
             .pipe(gulp.dest(`./dist/images`))
             .pipe(connect.reload());
