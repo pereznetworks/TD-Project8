@@ -23,7 +23,7 @@ const options = { src: 'src', dist: 'dist'};
 
 function images() {
   return gulp.src([ './src/images/*.jpg', './src/images/*.png'])
-            .pipe(gulp.dest(`./dist`));
+            .pipe(gulp.dest(`./dist/images`));
 }
 
 images.description = `optimize images files, copy to /dist folder`;
@@ -38,7 +38,7 @@ function compileSass() {
       .pipe(maps.init())
       .pipe(sass())
       .pipe(maps.write('./'))
-      .pipe(gulp.dest(`./dist/css`));
+      .pipe(gulp.dest(`./src/css`));
 }
 
 compileSass.discription = `using build ref, compile sass into css, a map file, copy to /dist/css folder`;
@@ -54,7 +54,7 @@ function minifyCSS() {
   return gulp.src('./src/index.html')
     .pipe(useref())
     .pipe(iff('*.css', csso()))
-    .pipe(gulp.dest(`./dist`));
+    .pipe(gulp.dest(`./dist/css`));
 }
 
 minifyCSS.description = `using build ref, run compileSass, map and minify, copy to /dist folder`;
@@ -78,7 +78,7 @@ function scripts() {
   return gulp.src('./src/index.html')
     .pipe(useref())
     .pipe(iff('*.js', uglify()))
-    .pipe(gulp.dest(`./dist`));
+    .pipe(gulp.dest(`./dist/js`));
 }
 
 scripts.description = `using build ref, minify, map and copy js files to /dist folder`;
@@ -89,7 +89,7 @@ scripts.description = `using build ref, minify, map and copy js files to /dist f
 
 function updateHTML() {
   return gulp.src([ './src/index.html'])
-            .pipe(gulp.dest(`./dist`));
+    .pipe(gulp.dest(`./dist`));
 }
 
 updateHTML.description = `update /dist version of html`;
@@ -100,7 +100,7 @@ updateHTML.description = `update /dist version of html`;
 // call using gulp.task(build);
 
 function build(done) {
-  gulp.series(clean, compileSass, styles, gulp.parallel(updateHTML, scripts, images));
+  gulp.series(compileSass, styles, scripts, images, updateHTML);
   done();
 }
 
