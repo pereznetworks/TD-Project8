@@ -91,7 +91,7 @@
           - same as html task
           - but runs clean first
 
-    Setup build process and development work-flow using:
+    Setup environment and gulpfile.js :
 
       - Node.js, NPM and Gulp
       - gulp modules  
