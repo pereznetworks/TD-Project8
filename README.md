@@ -39,13 +39,13 @@
 
 # DOING:
 
-      instead of merging with current master branch
-      make this branch 'next version'
+      update gulp images task
+        compress images and font files for production
 
 # TODO:
 
-      update gulp assets task
-        compress images and font files for production
+      instead of merging with current master branch
+        make this branch 'next version'
 
       review/verify what is needed for 'meets expectations' and 'exceeds'
 
