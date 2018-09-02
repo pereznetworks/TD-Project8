@@ -9,9 +9,9 @@
         sass = require('gulp-sass'),
         maps = require('gulp-sourcemaps'),
       uglify = require('gulp-uglify'),
-      useref = require('gulp-useref'),
          iff = require('gulp-if'),
-        csso = require('gulp-csso');
+        csso = require('gulp-csso'),
+     connect = require('gulp-connect');
 
 // vars for src and dist folder paths
 const options = { src: 'src', dist: 'dist'};
@@ -24,7 +24,8 @@ const options = { src: 'src', dist: 'dist'};
 
 function images() {
   return gulp.src([ './src/images/*.jpg', './src/images/*.png'])
-            .pipe(gulp.dest(`./dist/images`));
+            .pipe(gulp.dest(`./dist/images`))
+            .pipe(connect.reload());
 }
 
 images.description = `optimize images files, copy to /dist folder`;
@@ -43,7 +44,8 @@ function styles() {
       .pipe(concat('global.css'))
       .pipe(iff('*.css', csso()))
       .pipe(maps.write('./'))
-      .pipe(gulp.dest(`./dist/css`));
+      .pipe(gulp.dest(`./dist/css`))
+      .pipe(connect.reload());
 }
 
 styles.description = `compile sass, minify css and compile a map file, copy to /dist folder`;
@@ -59,7 +61,8 @@ function scripts() {
   return gulp.src('./src/js/**/*.js')
     .pipe(concat('global.js'))
     .pipe(iff('*.js', uglify()))
-    .pipe(gulp.dest(`./dist/js`));
+    .pipe(gulp.dest(`./dist/js`))
+    .pipe(connect.reload());
 }
 
 scripts.description = `using build ref, minify, map and copy js files to /dist folder`;
@@ -70,7 +73,8 @@ scripts.description = `using build ref, minify, map and copy js files to /dist f
 
 function updateHTML() {
   return gulp.src([ './src/index.html'])
-    .pipe(gulp.dest(`./dist`));
+    .pipe(gulp.dest(`./dist`))
+    .pipe(connect.reload());
 }
 
 updateHTML.description = `update /dist version of html`;
@@ -104,6 +108,17 @@ watchFiles.description = `watch for change to any src files, if so, run respecti
 // if watchFiles runs any tasks, server should be restarted
 // TODO: place server function declaration here ...
 
+function runServer(done) {
+  connect.server({
+    root: 'dist',
+    livereload: true
+  });
+  done();
+};
+
+runServer.description = `run a server with ./dist as root`;
+
+var server = gulp.series(runServer, watchFiles);
 
 // remove the /dist folder and everything in it
 // call using gulp.task('clean');
@@ -123,7 +138,8 @@ exports.updateHTML = updateHTML;
 exports.watchFiles = watchFiles;
 exports.clean = clean;
 exports.build = build;
+exports.runServer = runServer;
 
 // default task
 // TODO: for now is the build task, but will be server live-reload task
-gulp.task("default", build);
+gulp.task("default", server);
