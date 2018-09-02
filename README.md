@@ -4,6 +4,8 @@
     
     Using Gulp pre-v4 is not recommeneded due to vulnerabilities in gulp.util, which is a core part of Gulp pre-v4
     
+    see issue #1: migrate to gulp v4 
+    
 
 # Summary:
 
