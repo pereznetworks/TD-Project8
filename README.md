@@ -36,8 +36,8 @@
            or have stopped using it
             in their latest version
 
-      am now using gulp.connect to run a live-reload server
-      switched task functions in gulpfile.js to gulp 4 syntax
+      will be using gulp.connect to run a live-reload server
+      have switched task functions in gulpfile.js to gulp 4 syntax
 
     Project is complete and working for Gulp v3.9.1
          research gulp.util dedup issues
