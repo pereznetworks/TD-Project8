@@ -19,7 +19,7 @@ const options = { src: 'src', dist: 'dist'};
 // hadnt actually found a gulp module for this one yet...
 // for now were just copying the files to /dist
 // overwrite if any already exist
-// call using gulp.task("images");
+// call using gulp.task(images);
 
 function images() {
   return gulp.src([ './src/images/*.jpg', './src/images/*.png'])
@@ -31,7 +31,7 @@ images.description = `optimize images files, copy to /dist folder`;
 // compile sass into css,
 // copy to /dist/css folder,
 // save global.css and map.css
-// call using gulp.task('compileSass');
+// call using gulp.task(compileSass);
 
 function compileSass() {
   return gulp.src(`./src/sass/global.scss`)
@@ -48,7 +48,7 @@ compileSass.discription = `using build ref, compile sass into css, a map file, c
 // use build refs found in index.html
 // concat and minify all css
 // copy to /dist folder and overwrite if any exist
-// call using gulp.task('styles',['compileSass']);
+// call using gulp.task(minifyCSS);
 
 function minifyCSS() {
   return gulp.src('./src/index.html')
@@ -59,8 +59,11 @@ function minifyCSS() {
 
 minifyCSS.description = `using build ref, run compileSass, map and minify, copy to /dist folder`;
 
-function styles(){
-  return gulp.series(compileSass, minifyCSS);
+// series task for sass, css files
+// note:  have to pass (done) and call function done() to signal async completion
+function styles(done){
+  gulp.series(compileSass, minifyCSS);
+  done();
 }
 
 styles.description = `run compileSass and minifyCSS functions`;
@@ -69,10 +72,10 @@ styles.description = `run compileSass and minifyCSS functions`;
 // use build refs found in index.html
 // concat and minify all js
 // copy to /dist folder and overwrite if any exist
-// call using gulp.task("scripts");
+// call using gulp.task(scripts);
 
 function scripts() {
-  gulp.src('./src/index.html')
+  return gulp.src('./src/index.html')
     .pipe(useref())
     .pipe(iff('*.js', uglify()))
     .pipe(gulp.dest(`./dist`));
@@ -82,21 +85,23 @@ scripts.description = `using build ref, minify, map and copy js files to /dist f
 
 // in case any changes to src/index.html
 // can run this task copy to /dist, overwrite if /dist/index.html exists
-// call using gulp.task("updateHTML");
+// call using gulp.task(updateHTML);
 
 function updateHTML() {
-  return gulp.src([ './src/images/index.html'])
-            .pipe(gulp.dest(`/dist`));
+  return gulp.src([ './src/index.html'])
+            .pipe(gulp.dest(`./dist`));
 }
 
 updateHTML.description = `update /dist version of html`;
 
 // build task, compileSass tasks first
 // then run other tasks to prep src files for distribution
-// call using gulp.task("build",  ['clean', 'images']);
+// note:  have to pass (done) and call function done() to signal async completion
+// call using gulp.task(build);
 
-function build() {
+function build(done) {
   gulp.series(clean, compileSass, styles, gulp.parallel(updateHTML, scripts, images));
+  done();
 }
 
 build.description = `run all /dist prep tasks`;
@@ -134,6 +139,8 @@ clean.description = `remove the /dist folder and everything in it`;
 
 // declaring tasks that can called from the commandline
 // usage: gulp exportedFunctionName
+exports.updateHTML = updateHTML;
+exports.images = images;
 exports.clean = clean;
 exports.styles = styles;
 exports.scripts = scripts;
