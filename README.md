@@ -2,26 +2,26 @@
 
     Using Gulp to Build a Front-End Site
 
-    In this project you’ll be provided a website with
+    In this project I was provided a website with
      HTML, SCSS, JPEGs, PNGs and JavaScript files.
 
-    You’ll be required to set up a Gulp build process to
+    I set up a Gulp build process to
      prepare the website for deployment.
 
-    The build process must fulfill the following criteria:
+    I setup a  build process that meets to following criteria:
 
       Concatenate and minify the JavaScript files.
       Compile SCSS into CSS in a concatenated and minified file.
       Generate JavaScript and CSS source maps.
       Compress any JPEG or PNG files.
-      All output for the build process should be in a dist folder
+      All output for the build process is in the ./dist folder
        for distribution or deployment.
 
-# DOING:
+# PENDING:
 
-      since gulp v4 is still the "next version'
-        instead of merging with current master branch
-            will make this branch 'next version' of this project 
+      When Gulp v4 becomes the 'current version' or master
+       will make this branch 'current version' or master branch for this project
+       will call it v1.1.0
 
 # CHANGES for GULP v4:
 
@@ -31,7 +31,7 @@
 
       gulp.util deprecated in gulp v4
       https://medium.com/gulpjs/gulp-util-ca3b1f9f9ac5
-      breaks all modules that depend on it
+      breaking all modules that depend on it
 
       no longer using gulp.serve, latest version and ...
        90% of all gulp 'server' modules still use gulp.util
@@ -39,80 +39,109 @@
 
       updated to latest for all other required gulp modules,
        I am using...
-        del, concat, sass, sourcemaps, rename, uglify, csso
+        latest version of NodeJs, NPM and Gulp v4.0.0
+        also using latest verision of the following modules
+          del, gulp-concat, gulp-sass, gulp-sourcemaps, gulp-rename, gulp-uglify, gulp-csso
           these have fixed gulp.util vulnerabilities
            or have stopped using it
             in their latest version
 
       using gulp.connect to run a live-reload server
       have switched task functions in gulpfile.js to gulp 4 syntax
+      
+      has to switch from gulp-useref to gulp-concat
+        gulp-useref does not seem to pick up the build tags in the html file
+           instead the html file itself is copied over ... ???
+           will have to ressearch this and fix in future release of this project
+        gulp-concat just takes file that match the path and glob pattern 
+           and basically strings these together 
+           then am passing result to gulp.dest to write to ./dist folder
 
       using gulp.imagemin for jpg and png compression
-        for both master (gulp 3.9.1) and branch versions (gulp 4)
+        for both master (based Gulp 3.9.1) and this branch (based on Gulp 4)
         despite moderate vulnerabilities due to gulp.util...
         it does work with gulp v4 and...
         for gulp image compression
         there really doesn't seem to be another stable, well supported module
+        
+# Wish list: 
+
+      would like to find a well supported image compression js module ...
+        and make a gulp plugin out of it myself
+        or perhaps, gulp-imagemin will address gulp-util vulnerabilties 
+      
+      maybe gulp-useref will address the issue I found with build tags not working 
 
 # DONE:
 
-    In Gulp 4 branch, update gulp images task
-      using gulp-imagemin
-      compress images and font files for production
+    Migrated syntax to a branch of project to Gulp 4
 
-    Migrated to a branch of project to Gulp 4
+    Project is complete and working 
 
-    Project is complete and working for Gulp v3.9.1
-         research gulp.util dedup issues
+# Extra credit:
 
-    Added jquery.min.js link to index.html and jquery.min.js to src files
+      The gulp default task has been setup to run ...
+        a web server with live reload:
+          - run the clean then build task,
+          - a watchFiles task, monitoring src files for changes
+          - a simple http development server, uses ./dist folder ar root
+          - watchFiles may detect changes and runs associated tasks,
+            if so, web server is restarted
 
-    Make the serve task the default task
+# Project Expectations:    
 
-        gulp
-          default task - runs serve task
+    Setup build and development workflow using the following gulp tasks:
 
-    Setup 'live' development workflow
+        styles
+          - compiles sass into css
+          - compiles map file for the sass locations of css styles
+          - compresses css file
+          - copies to ./dist folder
+          - overwrites if exists
 
-        gulp serve
-          - runs build first
-          - runs watchFiles first
-          - using 'dist' folder root
-          - runs a simple http development server
-          - if watchFiles detects and runs associated tasks again
-             restart server
+        scripts
+          - concats js files into 1 js file
+          - minifies the js src file, including latest version of jquery
+          - copies to ./dist folder
+          - overwrite if exists
 
-    Setup build and workflow using gulp tasks:
+        images
+          - compresses images
+          - copies images to dist folder
+          - overwrites if exists
 
-        compileSass
-          - compile sass into css
-
-        assets
-          - copy assets to dist folder
-
-        html
-          - run compileSass and assets tasks
-          - concat, minify all css and js files then copy to dist folder
+        updateHTML
+          - copies src/index.html to dist/index.html
+          - overwrites if exists
 
         watchFiles
-          - run html in case changes to sass or js
+          - runs above tasks in case changes to respective src files
 
         build
-          - same as html task
-          - but runs clean first
+          - runs clean task
+          - runs styles, scripts, images, and updateHtml tasks
 
-    Setup environment and gulpfile.js :
+        clean
+          - dels ./dist folder and anything it
 
-      - Node.js, NPM and Gulp
-      - gulp modules  
-        concat, sass, sourcemaps, rename, uglify, csso,
-          gulp-useref and serve
+    Setup build process and development work-flow using:
+
+        Lastest versions Node.js, NPM and Gulp v4.0.0
+
+        Decided on gulp modules  
+          - del - deletes files and folders
+          - gulp-sass - compiles sass into css
+          - gulp-sourcemaps - create a map, track styles to location in sass file
+          - gulp-rename - rename files
+          - gulp-uglify - minify js files
+          - gulp-csso - minify css files
+          - gulp-concat - string together multiple files
+          - gulp-imagemin - compress jpeg and png files
+          - gulp-connect - runs a web server with live-reload
 
     Prep for project:
 
-      reviewed...
-        project instructions and exceeds speqs.
-        Gulp Basics course, Gulp UseRef workshop and SCRUM course
-        and project files
-
-    Will be going for Exceeds in this project
+        reviewed...
+          project instructions and exceeds speqs.
+          Gulp Basics course, Gulp UseRef workshop and SCRUM course
+          and project files
