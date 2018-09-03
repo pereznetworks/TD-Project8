@@ -9,7 +9,7 @@
         sass = require('gulp-sass'),
         maps = require('gulp-sourcemaps'),
       uglify = require('gulp-uglify'),
-      useref = require('gulp-useref'),
+      concat = require('gulp-concat'),
          iff = require('gulp-if'),
         csso = require('gulp-csso'),
        serve = require('gulp-serve');
@@ -34,7 +34,7 @@ gulp.task('compileSass', function() {
 gulp.task("images", function() {
   return gulp.src([ options.src + '/images/*'])
     .pipe(imagemin())
-    .pipe(gulp.dest(`${options.dist}`));
+    .pipe(gulp.dest(`${options.dist}/images`));
 });
 
 // prep SASS files for distribution
@@ -43,10 +43,10 @@ gulp.task("images", function() {
 // concat and minify all css
 // copy to /dist folder and overwrite if any exist
 gulp.task('styles',['compileSass'], function() {
-  gulp.src(options.src + '/index.html')
-    .pipe(useref())
+  gulp.src([options.src + '/css/**/*.css'])
+    .pipe(concat('global.css'))
     .pipe(iff('*.css', csso()))
-    .pipe(gulp.dest(`${options.dist}`));
+    .pipe(gulp.dest(`${options.dist}/css`));
 });
 
 // prep JavaScript files for distribution
@@ -55,10 +55,10 @@ gulp.task('styles',['compileSass'], function() {
 // concat and minify all js
 // copy to /dist folder and overwrite if any exist
 gulp.task('scripts', function() {
-  gulp.src(options.src + '/index.html')
-    .pipe(useref())
+  gulp.src(options.src + '/js/**/*.js')
+    .pipe(concat('global.js'))
     .pipe(iff('*.js', uglify()))
-    .pipe(gulp.dest(`${options.dist}`));
+    .pipe(gulp.dest(`${options.dist}/js`));
 });
 // copy /dist/index.html with src/index.html
 // overwrite, if it exists

@@ -17,6 +17,20 @@
       All output for the build process is in the ./dist folder
        for distribution or deployment.
 
+#Changes:
+
+    had to switch from gulp-useref to gulp-concat
+      gulp-useref does not seem to pick up the build tags in the html file
+        checked the syntax of build ref tags in html file,
+         the build tags look correct, src and dest glob patterns look okay
+         instead the html file itself is copied over ... ???
+      with switch to gulp-concat
+          gulp.src ( path and glob pattern )
+          and basically pipe matching files
+           to concat( desired name of concat'ed file )
+           then to minifying and then to gulp.dest to write to ./dist folder
+           everything works
+
 # Extra credit:
 
       The gulp default task has been setup to run ...
