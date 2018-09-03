@@ -85,12 +85,12 @@
      at the command line to delete all of the files
       and folders in the dist folder.
 
-    As a developer, I should be able to run the gulp build command
+    As a developer, I should be able to run the GULP BUILD command
      at the command line to run the clean, scripts, styles, and images
      tasks with confidence that the clean task completes
      before the other commands.
 
-    As a developer, I should be able to run the gulp command
+    As a developer, I should be able to run the GULP command
       at the command line to run the build task
         and serve my project using a local web server.
 
@@ -100,7 +100,7 @@
 
   1 step
 
-    As a developer, when I run the default gulp command,
+    As a developer, when I run the default GULP command,
       it should continuously watch for
         changes to any .scss file in my project.
       When there is a change to one of the .scss files,

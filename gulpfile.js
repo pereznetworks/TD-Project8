@@ -79,7 +79,7 @@ gulp.task("build",  ['clean', 'images'], function() {
   gulp.task('html');
   gulp.task('scripts');
   gulp.task('styles');
-  gulp.task('assets');
+  gulp.task('images');
 });
 
 // watchFiles task
