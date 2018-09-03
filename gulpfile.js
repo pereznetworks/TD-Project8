@@ -74,12 +74,7 @@ gulp.task('clean', function() {
 
 // build task, compileSass tasks first
 // then run other tasks to prep src files for distribution
-gulp.task("build",  ['clean', 'images'], function() {
-  gulp.task('updateHtml');
-  gulp.task('scripts');
-  gulp.task('styles');
-  gulp.task('images');
-});
+gulp.task("build",  ['clean', 'images', 'updateHtml', 'scripts', 'styles']);
 
 // watchFiles task
 // watch for changes to html, image files, scss and js files
