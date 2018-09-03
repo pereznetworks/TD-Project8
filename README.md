@@ -17,7 +17,7 @@
       All output for the build process is in the ./dist folder
        for distribution or deployment.
 
-#Changes:
+# CHANGES:
 
     had to switch from gulp-useref to gulp-concat
       gulp-useref does not seem to pick up the build tags in the html file
