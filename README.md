@@ -22,7 +22,7 @@
     for styles and scripts tasks  
       gulp-useref does not seem to pick up the build tags in the html file
         checked the syntax of build ref tags in html file,
-         the build tags look correct, src and dest glob patterns look okay
+         the build tags look correct, pre gulp-useref's documentation
          instead the html file itself is copied over
          this was working as-is previous to submission
          now ... ???
@@ -36,7 +36,7 @@
 
     changed build task
       instead of a function with 1 gulp.task for each task
-      using 1 array of gulp task name
+      using 1 array of gulp task names
 
     for images task
       added /images to gulp.dest( options.dist )
