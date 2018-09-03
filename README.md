@@ -86,13 +86,11 @@
           Gulp Basics course, Gulp UseRef workshop and SCRUM course
           and project files
 
-# DOING:
+# PENDING:
 
-    final code and doc review
+    Submission Review
 
 # TODO:
-
-    submit project
 
     "migrate to gulp v4" works fine with no bugs...
       - when Gulp 4 released as current version
@@ -102,7 +100,7 @@
     preserve current master branch
       - making it v.1.0.0  
 
-    address issues unable to fix in 'migrate to Gulp v4'
+    address issues unable to fix in 'migrate to Gulp v4' branch
     in Gulp v4,
         - gulp-imagemin works fine, but still uses gulp.util
           and has not addressed vulnerabilities
