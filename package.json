@@ -1,6 +1,6 @@
 {
   "name": "TD-Project8",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Using Gulp to Build a Front-End Site",
   "main": "index.js",
   "scripts": {
