@@ -30,6 +30,7 @@
        but... using WAY DIFFERENT syntax...
 
       gulp.util deprecated in gulp v4:
+      https://medium.com/gulpjs/gulp-util-ca3b1f9f9ac5 - automatic!
       [https://medium.com/gulpjs/gulp-util-ca3b1f9f9ac5](https://medium.com/gulpjs/gulp-util-ca3b1f9f9ac5)
       breaking all modules that depend on it
 
