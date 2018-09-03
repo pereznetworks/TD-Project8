@@ -60,11 +60,10 @@ gulp.task('scripts', function() {
     .pipe(iff('*.js', uglify()))
     .pipe(gulp.dest(`${options.dist}`));
 });
-
-// in case any changes to src/index.html
-// can run this task copy to /dist, overwrite if /dist/index.html exists
-gulp.task("html", function() {
-  return gulp.src([ options.src + '/images/index.html'], { base: './' + options.src })
+// copy /dist/index.html with src/index.html
+// overwrite, if it exists
+gulp.task("updateHtml", function() {
+  return gulp.src([ options.src + '/index.html'])
             .pipe(gulp.dest(`${options.dist}`));
 });
 
@@ -76,7 +75,7 @@ gulp.task('clean', function() {
 // build task, compileSass tasks first
 // then run other tasks to prep src files for distribution
 gulp.task("build",  ['clean', 'images'], function() {
-  gulp.task('html');
+  gulp.task('updateHtml');
   gulp.task('scripts');
   gulp.task('styles');
   gulp.task('images');
@@ -86,7 +85,7 @@ gulp.task("build",  ['clean', 'images'], function() {
 // watch for changes to html, image files, scss and js files
 // when a change is detected run appropriate task
 gulp.task('watchFiles', function() {
-  gulp.watch(options.src + '/index.html', ['html']);
+  gulp.watch(options.src + '/index.html', ['updateHtml']);
   gulp.watch(options.src + '/images/**/**', ['images']);
   gulp.watch(options.src + '/sass/**/*.scss', ['styles']);
   gulp.watch(options.src + '/js/**/*.js', ['scripts']);

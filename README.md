@@ -2,80 +2,82 @@
 
     Using Gulp to Build a Front-End Site
 
-    In this project you’ll be provided a website with
+    In this project I was provided a website with
      HTML, SCSS, JPEGs, PNGs and JavaScript files.
 
-    You’ll be required to set up a Gulp build process to
+    I set up a Gulp build process to
      prepare the website for deployment.
 
-    The build process must fulfill the following criteria:
+    I setup a  build process that meets to following criteria:
 
       Concatenate and minify the JavaScript files.
       Compile SCSS into CSS in a concatenated and minified file.
       Generate JavaScript and CSS source maps.
       Compress any JPEG or PNG files.
-      All output for the build process should be in a dist folder
+      All output for the build process is in the ./dist folder
        for distribution or deployment.
 
-# DONE:  
+# Extra credit:
 
-    Extra credit:
+      The gulp default task has been setup to run ...
+        a web server with live reload:
+          - run the clean then build task,
+          - a watchFiles task, monitoring src files for changes
+          - a simple http development server, uses ./dist folder ar root
+          - watchFiles may detect changes and runs associated tasks,
+            if so, web server is restarted
 
-      Setup 'live' development workflow
+# Project Expectations:    
 
-      gulp serve
-          - runs build first
-          - runs watchFiles first
-          - using 'dist' folder root
-          - runs a simple http development server
-          - if watchFiles detects and runs associated tasks again
-             restart server
-
-   Project Expectations:
-
-      Make the serve task the default task
-
-        gulp default task
-            - runs serve task
-              runs web server with ./dist as root        
-
-    Setup build and workflow using gulp tasks:
+    Setup build and development workflow using the following gulp tasks:
 
         styles
-          - compile sass into css
-          - create map file
-          - compress css file
-          - copy to ./dist folder
+          - compiles sass into css
+          - compiles map file for the sass locations of css styles
+          - compresses css file
+          - copies to ./dist folder
+          - overwrites if exists
 
         scripts
-          - concat js files into 1 js file
-          - minify js file
-          - copy to ./dist folder
+          - concats js files into 1 js file
+          - minifies the js src file, including latest version of jquery
+          - copies to ./dist folder
+          - overwrite if exists
 
         images
-          - compress imags
-          - copy assets to dist folder
+          - compresses images
+          - copies images to dist folder
+          - overwrites if exists
 
         html
-          - run compileSass and assets tasks
-          - concat, minify all css and js files then copy to dist folder
+          - copies src/index.html to dist/index.html
+          - overwrites if exists
 
         watchFiles
-          - run html in case changes to sass or js
+          - runs above tasks in case changes to respective src files
 
         build
-          - same as html task
-          - but runs clean first
+          - runs clean task
+          - runs styles, scripts, images, and updateHtml tasks
 
         clean
-          - del ./dist folder and anything it
+          - dels ./dist folder and anything it
 
     Setup build process and development work-flow using:
 
-        - Node.js, NPM and Gulp
-        - gulp modules  
-          concat, sass, sourcemaps, rename, uglify, csso,
-            gulp-useref and serve
+        Node.js, NPM and Gulp.
+          - Using current version of each.
+
+        Decided on gulp modules  
+          - del - deletes files and folders
+          - gulp-sass - compiles sass into css
+          - gulp-sourcemaps - create a map, track styles to location in sass file
+          - gulp-rename - rename files
+          - gulp-uglify - minify js files
+          - gulp-csso - minify css files
+          - gulp-useref - based on build refs html tag, concat multiple files
+          - gulp-imagemin - compress jpeg and png files
+          - gulp-serve - runs a web server with live-reload
 
     Prep for project:
 
@@ -84,12 +86,29 @@
           Gulp Basics course, Gulp UseRef workshop and SCRUM course
           and project files
 
-    Will be going for Exceeds in this project
-
 # DOING:
 
-    completed exceeds and expectations 
+    final code and doc review
 
 # TODO:
 
-    make branch "next version" of this project
+    submit project
+
+    "migrate to gulp v4" works fine with no bugs...
+      - when Gulp 4 released as current version
+      - make "migrate to gulp v4" current version of this project
+      - making it v.1.1.0
+
+    preserve current master branch
+      - making it v.1.0.0  
+
+    address issues unable to fix in 'migrate to Gulp v4'
+    in Gulp v4,
+        - gulp-imagemin works fine, but still uses gulp.util
+          and has not addressed vulnerabilities
+        - gulp-useref does not pick up the build refs tags in the html file  
+          work-around is to use gulp-concat
+          and point gulp.src to path and glob pattern for js and css files
+        - get a better handle on Gulp v4 promises and parallel tasking
+            can then streamline or break down some of the more involved tasks
+            like the styles task
