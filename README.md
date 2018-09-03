@@ -23,13 +23,20 @@
       gulp-useref does not seem to pick up the build tags in the html file
         checked the syntax of build ref tags in html file,
          the build tags look correct, src and dest glob patterns look okay
-         instead the html file itself is copied over ... ???
+         instead the html file itself is copied over
+         this was working as-is previous to submission
+         now ... ???
       with switch to gulp-concat
-          gulp.src ( path and glob pattern )
+          gulp.src ( path and glob pattern to css or js files)
           and basically pipe matching files
-           to concat( desired name of concat'ed file )
-           then to minifying and then to gulp.dest to write to ./dist folder
-           everything works
+           to concat( with desired name of concat'ed file )
+           then minify using uglify
+           and then to gulp.dest to write to ./dist folder
+           both styles and scripts task now work
+
+    changed build task
+      instead of a function with 1 gulp.task for each task
+      using 1 array of gulp task name
 
 # Extra credit:
 
