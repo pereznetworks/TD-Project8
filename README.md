@@ -17,6 +17,12 @@
       All output for the build process should be in a dist folder
        for distribution or deployment.
 
+# DOING:
+
+      since gulp v4 is still the "next version'
+        instead of merging with current master branch
+            will make this branch 'next version' of this project 
+
 # CHANGES for GULP v4:
 
       gulp.util deprecated in gulp v4
@@ -37,19 +43,20 @@
       using gulp.connect to run a live-reload server
       have switched task functions in gulpfile.js to gulp 4 syntax
 
-# DOING:
-
-      update gulp images task
-        compress images and font files for production
-
-# TODO:
-
-      instead of merging with current master branch
-        make this branch 'next version'
-
-      review/verify what is needed for 'meets expectations' and 'exceeds'
+      using gulp.imagemin for jpg and png compression
+        for both master (gulp 3.9.1) and branch versions (gulp 4)
+        despite moderate vulnerabilities due gulp.util...
+        it does work with gulp v4 and...
+        for gulp image compression
+        there really doesn't seem to be another stable, well supported module
 
 # DONE:
+
+    In Gulp 4 branch, update gulp images task
+      using gulp-imagemin
+      compress images and font files for production
+
+    Migrated to a branch of project to Gulp 4
 
     Project is complete and working for Gulp v3.9.1
          research gulp.util dedup issues

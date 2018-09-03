@@ -120,7 +120,7 @@ function runServer(done) {
 
 runServer.description = `run a server with ./dist as root`;
 
-var liveReloadServer = gulp.series(runServer, watchFiles);
+var liveReloadServer = gulp.series(build, runServer, watchFiles);
 
 // remove the /dist folder and everything in it
 // call using gulp.task('clean');
