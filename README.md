@@ -72,7 +72,7 @@
 
 # DONE:
 
-    Migrated syntax to a branch of project to Gulp 4
+    Migrated syntax work for Gulp v4
 
     Project is complete and working 
 
