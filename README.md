@@ -19,7 +19,7 @@
 
 # CHANGES:
 
-    had to switch from gulp-useref to gulp-concat
+    for styles and scripts tasks  
       gulp-useref does not seem to pick up the build tags in the html file
         checked the syntax of build ref tags in html file,
          the build tags look correct, src and dest glob patterns look okay
@@ -38,6 +38,8 @@
       instead of a function with 1 gulp.task for each task
       using 1 array of gulp task name
 
+    for images task
+      added /images to gulp.dest( options.dist )
 # Extra credit:
 
       The gulp default task has been setup to run ...
