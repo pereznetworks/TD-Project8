@@ -10,6 +10,7 @@
 // requiring needed modules
   const gulp = require('gulp'),
          del = require('del'),
+    imagemin = require('gulp-imagemin'),
       rename = require('gulp-rename'),
         sass = require('gulp-sass'),
         maps = require('gulp-sourcemaps'),
@@ -37,8 +38,9 @@ gulp.task('compileSass', function() {
 // for now were just copying the files to /dist
 // overwrite if any alreadt exist
 gulp.task("images", function() {
-  return gulp.src([ options.src + '/images/*.jpg', options.src + '/images/*.png', options.src + '/icons/**'], { base: './' + options.src })
-            .pipe(gulp.dest(`${options.dist}`));
+  return gulp.src([ options.src + '/images/*'])
+    .pipe(imagemin())
+    .pipe(gulp.dest(`${options.dist}`));
 });
 
 // prep SASS files for distribution
