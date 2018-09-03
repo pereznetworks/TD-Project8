@@ -33,10 +33,6 @@
       https://medium.com/gulpjs/gulp-util-ca3b1f9f9ac5 
       breaking all modules that depend on it
 
-      no longer using gulp.serve, latest version and ...
-       90% of all gulp 'server' modules still use gulp.util
-       and have not fixed or addressed vulnerabilities
-
       updated to latest for all other required gulp modules,
        I am using...
         latest version of NodeJs, NPM and Gulp v4.0.0
@@ -47,9 +43,11 @@
             in their latest version
 
       using gulp.connect to run a live-reload server
-      have switched task functions in gulpfile.js to gulp 4 syntax
-      
-      has to switch from gulp-useref to gulp-concat
+        no longer using gulp.serve, latest version and ...
+          90% of all gulp 'server' modules still use gulp.util
+          and have not fixed or addressed vulnerabilities
+       
+      had to switch from gulp-useref to gulp-concat
         gulp-useref does not seem to pick up the build tags in the html file
            instead the html file itself is copied over ... ???
            will have to ressearch this and fix in future release of this project
