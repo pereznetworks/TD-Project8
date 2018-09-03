@@ -1,12 +1,3 @@
-# NOTE:
-
-    Currently switching to gulp v4 syntax and gulp modiules that have addressed gulp.util dedup issues
-    
-    Since gulp.util is a core part of Gulp pre-v4
-        Using Gulp pre-v4 is not recommeneded due to gulp-util's very-outdated deps and vulnerabilities
-    
-    see issue #1: migrate to gulp v4 for updates on the migration 
-    
 # Summary:
 
     Using Gulp to Build a Front-End Site
@@ -28,14 +19,11 @@
 
 # DONE:  
 
-    Make the serve task the default task
+    Extra credit:
 
-        gulp
-          default task - runs serve task
+      Setup 'live' development workflow
 
-    Setup 'live' development workflow
-
-        gulp serve
+      gulp serve
           - runs build first
           - runs watchFiles first
           - using 'dist' folder root
@@ -43,12 +31,29 @@
           - if watchFiles detects and runs associated tasks again
              restart server
 
+   Project Expectations:
+
+      Make the serve task the default task
+
+        gulp default task
+            - runs serve task
+              runs web server with ./dist as root        
+
     Setup build and workflow using gulp tasks:
 
-        compileSass
+        styles
           - compile sass into css
+          - create map file
+          - compress css file
+          - copy to ./dist folder
 
-        assets
+        scripts
+          - concat js files into 1 js file
+          - minify js file
+          - copy to ./dist folder
+
+        images
+          - compress imags
           - copy assets to dist folder
 
         html
@@ -62,37 +67,29 @@
           - same as html task
           - but runs clean first
 
+        clean
+          - del ./dist folder and anything it
+
     Setup build process and development work-flow using:
 
-      - Node.js, NPM and Gulp
-      - gulp modules  
-        concat, sass, sourcemaps, rename, uglify, csso,
-          gulp-useref and serve
+        - Node.js, NPM and Gulp
+        - gulp modules  
+          concat, sass, sourcemaps, rename, uglify, csso,
+            gulp-useref and serve
 
     Prep for project:
 
-      reviewed...
-        project instructions and exceeds speqs.
-        Gulp Basics course, Gulp UseRef workshop and SCRUM course
-        and project files
+        reviewed...
+          project instructions and exceeds speqs.
+          Gulp Basics course, Gulp UseRef workshop and SCRUM course
+          and project files
 
     Will be going for Exceeds in this project
 
 # DOING:
 
-    do we need to add jQuery to the sites project files
-      if so, can gulp check for latest jquery
-        and place a min version of it in /dist/js folder
-        and place link to in html folder?
-
-    update gulp assets task
-      compress images and font files for production
-
-    review/verify what is needed for 'meets expectations' and 'exceeds'
+    completed exceeds and expectations 
 
 # TODO:
 
-    migrate to gulp v4
-      need to update or replace anything that relies on gulp.util
-      otherwise when cloning git repo and running straight npm install
-        some stuff will be broken
+    make branch "next version" of this project

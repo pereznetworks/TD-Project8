@@ -76,7 +76,7 @@
      at the command line, SOURCE MAPS are generated for the JavaScript
      and CSS files respectively.
 
-    As a developer, I should be able to run the gulp images command
+    As a developer, I should be able to run the GULP IMAGES command
      at the command line to optimize the size of the project’s JPEG
       and PNG files, and then copy those optimized images to the
       dist/content folder.

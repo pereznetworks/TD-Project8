@@ -1,9 +1,3 @@
-/* test each task, install fixed version of module or replacement
-  gulp.util deprecated in gulp v4
-  https://medium.com/gulpjs/gulp-util-ca3b1f9f9ac5
-  breaks all modules that depend on it
-  see ./gulpUtildeps.txt
-*/
 
 "use strict";
 
