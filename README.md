@@ -25,6 +25,10 @@
 
 # CHANGES for GULP v4:
 
+      so migrating to Gulp 4 required a complete re-write
+      the code does the exact same thing...
+       but... using WAY DIFFERENT syntax...
+
       gulp.util deprecated in gulp v4
       https://medium.com/gulpjs/gulp-util-ca3b1f9f9ac5
       breaks all modules that depend on it
