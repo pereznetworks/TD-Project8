@@ -34,10 +34,18 @@
            and then to gulp.dest to write to ./dist folder
            both styles and scripts task now work
 
-    changed build task
-      instead of a function with 1 gulp.task for each task
-      using 1 array of gulp task names
+    rewrite of build, watchFiles and server tasks
+      no longer using gulp.serve
+      instead using gulp.connect
+      when..
+       a watchFiles task detects a changed file and runs a task
+       added a callback function with pipe to connect.reload
 
+      build and watchFiles now work properly
+
+      however, watchFiles tasks runs tasks again...
+      then server tries to load before watchFiles is done
+      
     for images task
       added /images to gulp.dest( options.dist )
 # Extra credit:
