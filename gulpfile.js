@@ -95,7 +95,7 @@ updateHTML.description = `update /dist version of html`;
 // waiting for each to complete before continuing
 // clean task is the only task that be completed before the others begin
 
-var build = gulp.series(clean, styles, scripts, images, updateHTML);
+var build = gulp.series(clean, styles, scripts, images, icons, updateHTML);
 
 // build.description = `run all /dist prep tasks`;
 
