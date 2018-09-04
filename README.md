@@ -17,64 +17,65 @@
       All output for the build process is in the ./dist folder
        for distribution or deployment.
 
-# PENDING:
+# CHANGES:
 
-      When Gulp v4 becomes the 'current version' or master
-       will make this branch 'current version' or master branch for this project
-       will call it v1.1.0
+      I had everything fixed using Gulp v3.9.1
+        except dependent tasks were still running when main task started
+          for example: when the server started, the build task was still running
+          also, the watchFiles task would start while the build was running
+          which meant server would log missing files to console
+          this was probably due to async nature of these tasks
 
-# CHANGES for GULP v4:
+          I could spend some time, figuring out promises in Gulp v3.9.1
+          but using series in Gulp v4 makes this really easy
 
-      so migrating to Gulp 4 required a complete re-write
-      the code does the exact same thing...
-       but... using WAY DIFFERENT syntax...
+      so while migrating to Gulp 4 required a complete re-write
+      it actually was simpler than I thought
+        the code does the exact same thing...with NO bugs
+        and... using WAY DIFFERENT syntax...
 
-      gulp.util deprecated in gulp v4:
-      https://medium.com/gulpjs/gulp-util-ca3b1f9f9ac5 
-      breaking all modules that depend on it
+      for gulp.util deprecation in gulp v4 see:
+        https://medium.com/gulpjs/gulp-util-ca3b1f9f9ac5
+        breaking all modules that depend on it
 
       updated to latest for all other required gulp modules,
        I am using...
         latest version of NodeJs, NPM and Gulp v4.0.0
-        also using latest verision of the following modules
+        also using latest version of the following modules
           del, gulp-concat, gulp-sass, gulp-sourcemaps, gulp-rename, gulp-uglify, gulp-csso
           these have fixed gulp.util vulnerabilities
            or have stopped using it
             in their latest version
 
       using gulp.connect to run a live-reload server
-        no longer using gulp.serve, latest version and ...
-          90% of all gulp 'server' modules still use gulp.util
-          and have not fixed or addressed vulnerabilities
-       
+
       had to switch from gulp-useref to gulp-concat
         gulp-useref does not seem to pick up the build tags in the html file
            instead the html file itself is copied over ... ???
-           will have to ressearch this and fix in future release of this project
-        gulp-concat just takes file that match the path and glob pattern 
-           and basically strings these together 
+           will have to research this and fix in future release of this project
+        gulp-concat just takes file that match the path and glob pattern
+           and basically strings these together
            then am passing result to gulp.dest to write to ./dist folder
 
       using gulp.imagemin for jpg and png compression
-        for both master (based Gulp 3.9.1) and this branch (based on Gulp 4)
         despite moderate vulnerabilities due to gulp.util...
         it does work with gulp v4 and...
         for gulp image compression
         there really doesn't seem to be another stable, well supported module
-        
-# Wish list: 
+
+# Wish list:
 
       would like to find a well supported image compression js module ...
         and make a gulp plugin out of it myself
-        or perhaps, gulp-imagemin will address gulp-util vulnerabilties 
-      
-      maybe gulp-useref will address the issue I found with build tags not working 
+        or perhaps, gulp-imagemin will address gulp-util vulnerabilties
+
+      maybe gulp-useref will address the issue I found with build tags not working
 
 # DONE:
 
     Migrated syntax work for Gulp v4
 
-    Project is complete and working 
+    Project Expectation and Extra Credit features complete and working
 
 # Extra credit:
 
@@ -106,6 +107,10 @@
         images
           - compresses images
           - copies images to dist folder
+          - overwrites if exists
+
+        icons
+          - copies icons to dist folder
           - overwrites if exists
 
         updateHTML
