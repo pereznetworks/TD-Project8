@@ -32,7 +32,6 @@
     "gulp-uglify": "^3.0.1"
   },
   "dependencies": {
-    "minify": "^3.0.5",
     "npm": "^6.4.1"
   }
 }
