@@ -1,6 +1,6 @@
 {
   "name": "TD-Project8",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Using Gulp to Build a Front-End Site",
   "main": "index.js",
   "scripts": {
@@ -19,8 +19,13 @@
   "homepage": "https://github.com/pereznetworks/TD-Project8#readme",
   "devDependencies": {
     "del": "^3.0.0",
+<<<<<<< HEAD
     "graceful-fs": "^4.1.11",
     "gulp": "^3.9.1",
+=======
+    "gulp": "^4.0.0",
+    "gulp-cli": "^2.0.1",
+>>>>>>> migrate-to-gulp-v4
     "gulp-concat": "^2.6.1",
     "gulp-connect": "^5.6.1",
     "gulp-csso": "^3.0.1",
@@ -28,6 +33,7 @@
     "gulp-imagemin": "^4.1.0",
     "gulp-rename": "^1.4.0",
     "gulp-sass": "^4.0.1",
+<<<<<<< HEAD
     "gulp-serve": "^1.4.0",
     "gulp-sourcemaps": "^2.6.4",
     "gulp-uglify": "^3.0.1",
@@ -35,4 +41,13 @@
     "minimatch": "^3.0.2"
   },
   "dependencies": {}
+=======
+    "gulp-sourcemaps": "^2.6.4",
+    "gulp-uglify": "^3.0.1"
+  },
+  "dependencies": {
+    "minify": "^3.0.5",
+    "npm": "^6.4.1"
+  }
+>>>>>>> migrate-to-gulp-v4
 }
