@@ -31,6 +31,17 @@ function images() {
 
 images.description = `optimize images files, copy to /dist folder`;
 
+// copy icons to /dist folder, overwrite is exist
+
+function icons() {
+  return gulp.src([ './src/icons/*'])
+            .pipe(gulp.dest(`./dist/icons`))
+            .pipe(connect.reload());
+}
+
+icons.description = `copy icons to /dist folder, overwrite is exist`;
+
+
 // prep Sass files for distribution
 // compile sass into css
 // minify the css
@@ -84,7 +95,7 @@ updateHTML.description = `update /dist version of html`;
 // waiting for each to complete before continuing
 // clean task is the only task that be completed before the others begin
 
-var build = gulp.series(clean, styles, scripts, images, updateHTML);
+var build = gulp.series(clean, styles, scripts, images, icons, updateHTML);
 
 // build.description = `run all /dist prep tasks`;
 
@@ -95,6 +106,7 @@ var build = gulp.series(clean, styles, scripts, images, updateHTML);
 
 function watchFiles(done) {
   gulp.watch('./src/index.html', updateHTML);
+  gulp.watch('./src/icons/**/**', icons);
   gulp.watch('./src/images/**/**', images);
   gulp.watch('./src/sass/**/*.scss', styles);
   gulp.watch('./src/js/**/*.js', scripts);
@@ -103,28 +115,26 @@ function watchFiles(done) {
 
 watchFiles.description = `watch for change to any src files, if so, run respective dist prep task`;
 
-// a server task
-// runs the build task
-// runs watchFiles task
-// start a server
-// if watchFiles runs any tasks, server should be restarted
-// TODO: place server function declaration here ...
-
+// start a web server
+// using the dist folder as root
+// livereload enabled
 function runServer(done) {
   connect.server({
     root: 'dist',
-    livereload: true
+    livereload: true,
+    port: 3000
   });
   done();
 };
 
-runServer.description = `run a server with ./dist as root`;
+runServer.description = `start a web server with ./dist as root`;
 
+// using series to run a build then a web server, then watchFiles
+// reloads the webserver when any '/dist' files are changed
 var liveReloadServer = gulp.series(build, runServer, watchFiles);
 
 // remove the /dist folder and everything in it
 // call using gulp.task('clean');
-
 function clean() {
   return del([`./dist`]);
 }
@@ -133,6 +143,7 @@ clean.description = `remove the /dist folder and everything in it`;
 
 // declaring tasks that can called from the commandline
 // usage: gulp exportedFunctionName
+exports.icons = icons;
 exports.images = images;
 exports.styles = styles;
 exports.scripts = scripts;
