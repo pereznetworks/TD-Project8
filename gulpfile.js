@@ -83,19 +83,19 @@ scripts.description = `using build ref, minify, map and copy js files to /dist f
 // can run this task copy to /dist, overwrite if /dist/index.html exists
 // call using gulp.task(updateHTML);
 
-function updateHTML() {
+function updateHtml() {
   return gulp.src([ './src/index.html'])
     .pipe(gulp.dest(`./dist`))
     .pipe(connect.reload());
 }
 
-updateHTML.description = `update /dist version of html`;
+updateHtml.description = `update /dist version of html`;
 
 // build task, run these task 1 after the other
 // waiting for each to complete before continuing
 // clean task is the only task that be completed before the others begin
 
-var build = gulp.series(clean, styles, scripts, images, icons, updateHTML);
+var build = gulp.series(clean, styles, scripts, images, icons, updateHtml);
 
 // build.description = `run all /dist prep tasks`;
 
@@ -105,7 +105,7 @@ var build = gulp.series(clean, styles, scripts, images, icons, updateHTML);
 // call using gulp.task('watchFiles');
 
 function watchFiles(done) {
-  gulp.watch('./src/index.html', updateHTML);
+  gulp.watch('./src/index.html', updateHtml);
   gulp.watch('./src/icons/**/**', icons);
   gulp.watch('./src/images/**/**', images);
   gulp.watch('./src/sass/**/*.scss', styles);
@@ -147,7 +147,7 @@ exports.icons = icons;
 exports.images = images;
 exports.styles = styles;
 exports.scripts = scripts;
-exports.updateHTML = updateHTML;
+exports.updateHTML = updateHtml;
 exports.watchFiles = watchFiles;
 exports.clean = clean;
 exports.build = build;
