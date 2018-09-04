@@ -19,49 +19,55 @@
 
 # CHANGES:
 
-      I had everything fixed using Gulp v3.9.1
-        except dependent tasks were still running when main task started
-          for example: when the server started, the build task was still running
-          also, the watchFiles task would start while the build was running
+      Migrated to Gulp v4
+        I had everything fixed using Gulp v3.9.1
+          except dependent tasks were still running when main task started
+        for example: when the server started,
+          the build task was still running
           which meant server would log missing files to console
           this was probably due to async nature of these tasks
-
-          I could spend some time, figuring out promises in Gulp v3.9.1
+        I could spend some time, figuring out promises in Gulp v3.9.1
           but using series in Gulp v4 makes this really easy
 
       so while migrating to Gulp 4 required a complete re-write
-      it actually was simpler than I thought
-        the code does the exact same thing...with NO bugs
-        and... using WAY DIFFERENT syntax...
+        it actually was simpler than I thought
+          the code does the exact same thing
+          ...with NO bugs
+          ... using WAY DIFFERENT syntax...
+          but it actually reads like cleaner JavaScript
 
       for gulp.util deprecation in gulp v4 see:
         https://medium.com/gulpjs/gulp-util-ca3b1f9f9ac5
         breaking all modules that depend on it
+        or spitting out all kinds of warnings regarding vulnerabilities
 
       updated to latest for all other required gulp modules,
        I am using...
         latest version of NodeJs, NPM and Gulp v4.0.0
         also using latest version of the following modules
-          del, gulp-concat, gulp-sass, gulp-sourcemaps, gulp-rename, gulp-uglify, gulp-csso
-          these have fixed gulp.util vulnerabilities
-           or have stopped using it
+          del, gulp-concat, gulp-sass, gulp-sourcemaps, gulp-rename
+          and gulp-uglify, gulp-csso
+          these either fixed gulp.util vulnerabilities
+           or have stopped or were not using it
             in their latest version
 
       using gulp.connect to run a live-reload server
+        no longer using gulp.server, haven't fixed gulp.util issues yet
+        is also able to understand it's syntax better
 
       had to switch from gulp-useref to gulp-concat
         gulp-useref does not seem to pick up the build tags in the html file
            instead the html file itself is copied over ... ???
            will have to research this and fix in future release of this project
-        gulp-concat just takes file that match the path and glob pattern
-           and basically strings these together
-           then am passing result to gulp.dest to write to ./dist folder
+        gulp-concat works as expected and is easy to use
 
       using gulp.imagemin for jpg and png compression
         despite moderate vulnerabilities due to gulp.util...
         it does work with gulp v4 and...
         for gulp image compression
         there really doesn't seem to be another stable, well supported module
+
+      added a separate icons task
 
 # Wish list:
 
