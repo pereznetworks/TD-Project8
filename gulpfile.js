@@ -12,10 +12,15 @@
       concat = require('gulp-concat'),
          iff = require('gulp-if'),
         csso = require('gulp-csso'),
-       serve = require('gulp-serve');
+     connect = require('gulp-connect');
 
 // vars for src and dist folder paths
 const options = { src: 'src', dist: 'dist'};
+
+// remove the /dist folder and everything in it
+ gulp.task('clean', function() {
+   del([options.dist, options.dist + '/css/global.css*', options.dist + '/js/app*.js*']);
+ });
 
 // compile sass into css,
 // copy to /dist/css folder,
@@ -28,13 +33,20 @@ gulp.task('compileSass', function() {
       .pipe(gulp.dest(`${options.src}/css`));
 });
 
-// optimize and/or compress asset files, images and icons for distribution
+// optimize and/or compress images for distribution
 // for now were just copying the files to /dist
 // overwrite if any alreadt exist
-gulp.task("images", function() {
+gulp.task('images', ['clean'], function() {
   return gulp.src([ options.src + '/images/*'])
-    .pipe(imagemin())
-    .pipe(gulp.dest(`${options.dist}/images`));
+        .pipe(imagemin())
+        .pipe(gulp.dest(`${options.dist}/images`));
+});
+
+// copy icons for distribution
+// overwrite if any alreadt exist
+gulp.task('icons', ['clean'], function() {
+  return gulp.src([ options.src + '/icons/*'])
+    .pipe(gulp.dest(`${options.dist}/icons`));
 });
 
 // prep SASS files for distribution
@@ -42,11 +54,11 @@ gulp.task("images", function() {
 // use build refs found in index.html
 // concat and minify all css
 // copy to /dist folder and overwrite if any exist
-gulp.task('styles',['compileSass'], function() {
+gulp.task('styles', ['compileSass'], function() {
   gulp.src([options.src + '/css/**/*.css'])
-    .pipe(concat('global.css'))
-    .pipe(iff('*.css', csso()))
-    .pipe(gulp.dest(`${options.dist}/css`));
+      .pipe(concat('global.css'))
+      .pipe(iff('*.css', csso()))
+      .pipe(gulp.dest(`${options.dist}/css`));
 });
 
 // prep JavaScript files for distribution
@@ -56,43 +68,60 @@ gulp.task('styles',['compileSass'], function() {
 // copy to /dist folder and overwrite if any exist
 gulp.task('scripts', function() {
   gulp.src(options.src + '/js/**/*.js')
-    .pipe(concat('global.js'))
-    .pipe(iff('*.js', uglify()))
-    .pipe(gulp.dest(`${options.dist}/js`));
-});
-// copy /dist/index.html with src/index.html
-// overwrite, if it exists
-gulp.task("updateHtml", function() {
-  return gulp.src([ options.src + '/index.html'])
-            .pipe(gulp.dest(`${options.dist}`));
+      .pipe(concat('global.js'))
+      .pipe(iff('*.js', uglify()))
+      .pipe(gulp.dest(`${options.dist}/js`));
 });
 
-// remove the /dist folder and everything in it
-gulp.task('clean', function() {
-  del([options.dist, options.dist + '/css/global.css*', options.dist + '/js/app*.js*']);
+// copy /dist/index.html with src/index.html
+// overwrite, if it exists
+gulp.task('updateHtml', function() {
+  return gulp.src([ options.src + '/index.html'])
+        .pipe(gulp.dest(`${options.dist}`));
 });
 
 // build task, compileSass tasks first
-// then run other tasks to prep src files for distribution
-gulp.task("build",  ['clean', 'images', 'updateHtml', 'scripts', 'styles']);
+// then run other functions to prep src files for distribution
+gulp.task("build", ['clean'], function(){
+ gulp.start('images', 'icons', 'styles', 'scripts', 'updateHtml');
+});
 
 // watchFiles task
 // watch for changes to html, image files, scss and js files
 // when a change is detected run appropriate task
+// once done with a task, reload server
 gulp.task('watchFiles', function() {
-  gulp.watch(options.src + '/index.html', ['updateHtml']);
-  gulp.watch(options.src + '/images/**/**', ['images']);
-  gulp.watch(options.src + '/sass/**/*.scss', ['styles']);
-  gulp.watch(options.src + '/js/**/*.js', ['scripts']);
+  gulp.watch(options.src + '/index.html', function(){
+    gulp.task('updateHtml')
+        .pipe(connect.reload());
+   });
+  gulp.watch(options.src + '/images/**/**', function(){
+    gulp.task('images')
+        .pipe(connect.reload());
+   });
+   gulp.watch(options.src + '/icons/**/**', function(){
+     gulp.task('icons')
+         .pipe(connect.reload());
+    });
+  gulp.watch(options.src + '/sass/**/*.scss', function(){
+    gulp.task('styles')
+        .pipe(connect.reload());
+   });
+  gulp.watch(options.src + '/js/**/*.js', function(){
+    gulp.task('scripts')
+        .pipe(connect.reload());
+   });
 })
 
-// serve task
-// runs the build task
-// runs watchFiles task
-// starts a server
-// if watchFiles runs any tasks, server is restarted
-gulp.task('serve', ['build','watchFiles'], serve(options.dist));
+//setting up a task to start a web server with livereload
+gulp.task('runServer', ['build','watchFiles'], function() {
+  connect.server({
+    root: './dist',
+    livereload: true,
+    port: 3000
+  });
+});
 
 // default task
 // and then run serve task
-gulp.task("default", ["serve"]);
+gulp.task("default", ["runServer"]);
