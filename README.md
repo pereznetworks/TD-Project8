@@ -81,7 +81,7 @@
 
     Migrated syntax work for Gulp v4
 
-    Project Expectation and Extra Credit features complete and working
+    Project Meets-Expectations and Extra Credit features complete and working
 
 # Extra credit:
 
@@ -89,7 +89,7 @@
         a web server with live reload:
           - run the clean then build task,
           - a watchFiles task, monitoring src files for changes
-          - a simple http development server, uses ./dist folder ar root
+          - a simple http development server, uses ./dist folder as root
           - watchFiles may detect changes and runs associated tasks,
             if so, web server is restarted
 
@@ -119,7 +119,7 @@
           - copies icons to dist folder
           - overwrites if exists
 
-        updateHTML
+        updateHtml
           - copies src/index.html to dist/index.html
           - overwrites if exists
 
