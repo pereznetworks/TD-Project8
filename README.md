@@ -17,6 +17,19 @@
       All output for the build process is in the ./dist folder
        for distribution or deployment.
 
+# TO RUN THE GULP 4 TASKS FROM COMMAND-LINE:
+
+  Even though Gulp is @4.0.0,
+  some may have older version of gul-cli installed globally
+
+  Please make sure the local folder and global version of gulp-cli are the same
+
+    run `npm i -g gulp-cli`
+      to get the environment versions of gulp-cli in alignment with
+       all packages that come with gulp.
+
+  After that a simple `npm install`, should get everything else to work...
+
 # CHANGES:
 
       Migrated to Gulp v4
