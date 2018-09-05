@@ -53,7 +53,7 @@
 
       using gulp.connect to run a live-reload server
         no longer using gulp.server, haven't fixed gulp.util issues yet
-        plsu, I understand it's syntax better
+        plus, I understand it's syntax better
 
       had to switch from gulp-useref to gulp-concat
         gulp-useref does not seem to pick up the build tags in the html file
