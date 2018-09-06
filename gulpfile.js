@@ -25,7 +25,7 @@ const options = { src: 'src', dist: 'dist'};
 function images() {
   return gulp.src([ './src/images/*'])
             .pipe(imagemin())
-            .pipe(gulp.dest(`./dist/images`))
+            .pipe(gulp.dest(`./dist/content`))
             .pipe(connect.reload());
 }
 
@@ -46,38 +46,41 @@ icons.description = `copy icons to /dist folder, overwrite is exist`;
 // compile sass into css
 // minify the css
 // compile a source map file
-// copy to /dist folder and overwrite if any exist
+// copy to /dist/styles folder and overwrite if any exist
 // call using gulp.task(styles);
 
 function styles() {
   return gulp.src(`./src/sass/global.scss`)
       .pipe(maps.init())
       .pipe(sass())
-      .pipe(concat('global.css'))
+      .pipe(concat('all.min.css'))
       .pipe(iff('*.css', csso()))
       .pipe(maps.write('./'))
-      .pipe(gulp.dest(`./dist/css`))
+      .pipe(gulp.dest(`./dist/styles`))
       .pipe(connect.reload());
 }
 
-styles.description = `compile sass, minify css and compile a map file, copy to /dist folder`;
+styles.description = `compile sass, minify css and compile a map file, copy to /dist/scripts folder`;
 
 // prep JavaScript files for distribution
 // run compileSass
 // use build refs found in index.html
-// concat and minify all js
-// copy to /dist folder and overwrite if any exist
+// concat and minify all js into all.min.js
+// and compile an all.min.js.map
+// copy to /dist/scripts folder and overwrite if any exist
 // call using gulp.task(scripts);
 
 function scripts() {
   return gulp.src('./src/js/**/*.js')
-    .pipe(concat('global.js'))
+    .pipe(maps.init())
+    .pipe(concat('all.min.js'))
+    .pipe(maps.write('./'))
     .pipe(iff('*.js', uglify()))
-    .pipe(gulp.dest(`./dist/js`))
+    .pipe(gulp.dest(`./dist/scripts`))
     .pipe(connect.reload());
 }
 
-scripts.description = `using build ref, minify, map and copy js files to /dist folder`;
+scripts.description = `using build ref, minify, map and copy js files to /dist/scripts folder`;
 
 // in case any changes to src/index.html
 // can run this task copy to /dist, overwrite if /dist/index.html exists
