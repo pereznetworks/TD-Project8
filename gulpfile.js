@@ -74,8 +74,8 @@ function scripts() {
   return gulp.src('./src/js/**/*.js')
     .pipe(maps.init())
     .pipe(concat('all.min.js'))
-    .pipe(maps.write('./'))
     .pipe(iff('*.js', uglify()))
+    .pipe(maps.write('./'))
     .pipe(gulp.dest(`./dist/scripts`))
     .pipe(connect.reload());
 }
