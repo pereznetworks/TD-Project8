@@ -32,6 +32,23 @@
 
 # CHANGES:
 
+    Second Review
+
+      Changed concatenated/minified js and css files tasks
+        so that the result is a file name all.min.js for javascript
+        and a file name all.min.css for css
+        these are copied to a scripts folder for javascript
+        and copied to styles folder for the compiled css
+
+      A source map is compiled for the js and copied to the dist/scripts folder
+
+      Compressed image files are now copied to a dist/content folder
+
+      Changes to index.html so that images, scripts and styles can be loaded
+        from the correct dist folders
+
+    First Review
+
       Migrated to Gulp v4
         I had everything fixed using Gulp v3.9.1
           except dependent tasks were still running when main task started

@@ -16,83 +16,82 @@
 
 # Before you start:
 
-  To prepare for this project you'll need to make sure you complete and understand these steps.
+  To prepare for this project you'll need to
+    make sure you complete and understand these steps.
 
-  To prepare for this project you'll need to make sure you complete and understand these steps.
+    4 steps
 
-  4 steps
+    Have a GitHub account
+      and know how to create a new repository
+      and upload files to it.
 
-  Have a GitHub account
-    and know how to create a new repository
-    and upload files to it.
+    As with the previous projects,
+      you'll submit your finished working using GitHub.
 
-  As with the previous projects,
-    you'll submit your finished working using GitHub.
+    Check out the workshop 'Share Your Projects wIth GitHub Desktop'
+      in the Project Resources.
 
-  Check out the workshop 'Share Your Projects wIth GitHub Desktop'
-    in the Project Resources.
+      If you need a reminder on how to use GitHub
+        and GitHub desktop to create a new repository
 
-    If you need a reminder on how to use GitHub
-      and GitHub desktop to create a new repository
+    Download the project files.
+    We've supplied a project folder
+     containing the following files for you to use:
 
-  Download the project files.
-  We've supplied a project folder
-   containing the following files for you to use:
+        index.html -- the web page for the project
 
-      index.html -- the web page for the project
+        images directory -- contains jpg and png images
 
-      images directory -- contains jpg and png images
+        sass directory -- contains various Sass files
 
-      sass directory -- contains various Sass files
+        js directory -- contains a global.js file and a subdirectory
+          --  circle -- with two other helper JavaScript files
 
-      js directory -- contains a global.js file and a subdirectory
-        --  circle -- with two other helper JavaScript files
-
-      icons directory -- you can ignore this folder in your build process
-       but you will need to copy this folder over
-        to the dist directory for the final build
+        icons directory -- you can ignore this folder in your build process
+         but you will need to copy this folder over
+          to the dist directory for the final build
 
 # Project Instructions:
 
   To complete this project, follow the instructions below.
     If you get stuck, ask a question in the community.
 
-  8 steps
+    8 steps
 
-    As a developer, I should be able to run the NPM INSTALL command
-     to install all of the dependencies for the build process.
+      As a developer, I should be able to run the NPM INSTALL command
+       to install all of the dependencies for the build process.
 
-    As a developer, I should be able to run the GULP SCRIPTS command
-     at the command line to CONCATENATE, MINIFY, and copy
-      all of the project’s JavaScript files into an ALL.MIN.JS file
-       that is then copied to the dist/scripts folder.
+      As a developer, I should be able to run the GULP SCRIPTS command
+       at the command line to CONCATENATE, MINIFY, and copy
+        all of the project’s JavaScript files into an ALL.MIN.JS file
+         that is then copied to the dist/scripts folder.
 
-    As a developer, I should be able to run the GULP STYLES command
-     at the command line to compile the project’s SCSS files into CSS,
-     then CONCATENATE AND MINIFY into an ALL.MIN.CSS file
-      that is then copied to the dist/styles folder.
+      As a developer, I should be able to run the GULP STYLES command
+       at the command line to compile the project’s SCSS files into CSS,
+       then CONCATENATE AND MINIFY into an ALL.MIN.CSS file
+        that is then copied to the dist/styles folder.
 
-    As a developer, when I run the gulp scripts or GULP STYLES commands
-     at the command line, SOURCE MAPS are generated for the JavaScript
-     and CSS files respectively.
+      As a developer, when I run the gulp scripts or GULP STYLES commands
+       at the command line, SOURCE MAPS are generated for the JavaScript
+       and CSS files respectively.
 
-    As a developer, I should be able to run the gulp images command
-     at the command line to optimize the size of the project’s JPEG
-      and PNG files, and then copy those optimized images to the
-      dist/content folder.
+      As a developer, I should be able to run the gulp images command
+       at the command line to optimize the size of the project’s JPEG
+        and PNG files, and then copy those optimized images to the
+        dist/content folder.
 
-    As a developer, I should be able to run the GULP CLEAN command
-     at the command line to delete all of the files
-      and folders in the dist folder.
+      As a developer, I should be able to run the GULP CLEAN command
+       at the command line to delete all of the files
+        and folders in the dist folder.
 
-    As a developer, I should be able to run the gulp build command
-     at the command line to run the clean, scripts, styles, and images
-     tasks with confidence that the clean task completes
-     before the other commands.
+      As a developer, I should be able to run the gulp build command
+       at the command line to run the clean, scripts, styles, and images
+       tasks with confidence that the clean task completes
+       before the other commands.
 
-    As a developer, I should be able to run the gulp command
-      at the command line to run the build task
-        and serve my project using a local web server.
+      As a developer, I should be able to run the gulp command
+        at the command line to run the build task
+          and serve my project using a local web server.
 
 # Extra Credit:
 
