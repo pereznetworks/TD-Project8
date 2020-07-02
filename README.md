@@ -1,6 +1,8 @@
-# Summary:
 
+# Summary:
     Using Gulp to Build a Front-End Site
+    
+    this is Project 8, part of TeamTreehouse, Tech Degree, Full Stack JavaScript, Unit 8
 
     In this project I was provided a website with
      HTML, SCSS, JPEGs, PNGs and JavaScript files.
