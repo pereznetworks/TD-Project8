@@ -98,7 +98,7 @@
   - despite moderate vulnerabilities due to gulp.util...
   - it does work with gulp v4 and...
   - for gulp image compression
-  - there really doesn't seem to be another stable, well supported module
+    - there really doesn't seem to be another stable, well supported module
 
 - added a separate icons task
 
