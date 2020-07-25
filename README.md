@@ -114,7 +114,7 @@
 
 ## Milestones:
 
-- Migrated syntax work for Gulp v4
+- Migrated code to work for Gulp v4
   - this was real headache, but worth the effort
 
 - Project Requirements and Dev Server features complete and working
