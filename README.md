@@ -190,3 +190,12 @@
 
 - clean
   - dels ./dist folder and anything it
+
+### Debug Build and QA Demo site
+
+- debug build process
+
+- access demo site to check js/css styling 
+
+- tweak js/sass
+  - re-run build to see changes
