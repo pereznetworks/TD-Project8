@@ -8,7 +8,8 @@
 ## To begin with
 
 - In this project I was provided a website with
-- HTML, SCSS, JPEGs, PNGs and JavaScript files.
+
+  - HTML, SCSS, JPEGs, PNGs and JavaScript files.
 
 - I set up a Gulp build process to prepare the website for deployment.
 
