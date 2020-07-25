@@ -112,11 +112,11 @@
 
 - maybe gulp-useref will address the issue I found with build tags not working
 
-## DONE:
+## Milestones:
 
 - Migrated syntax work for Gulp v4
 
-- Project Meets-Expectations and Extra Credit features complete and working
+- Project Requirements and Dev Server features complete and working
 
 ## Dev Server as part of Build process:
 
