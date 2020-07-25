@@ -118,7 +118,7 @@
 
 - Project Meets-Expectations and Extra Credit features complete and working
 
-## Extra credit:
+## Dev Server as part of Build process:
 
 - The gulp default task has been setup to run ...
   - a web server with live reload:
@@ -195,7 +195,7 @@
 
 - debug build process
 
-- access demo site to check js/css styling 
+- access demo site to check js/css styling
 
 - tweak js/sass
   - re-run build to see changes
