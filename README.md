@@ -1,9 +1,11 @@
 
-# Summary:
+# An Advanced Demo: Using Gulp to Build a Front-End Web-Site
 
 - Using Gulp to Build a Front-End Site
 
-- this is Project 8, part of TeamTreehouse, Tech Degree, Full Stack JavaScript, Unit 8
+- this was originally part of TeamTreehouse, Tech Degree, Full Stack JavaScript
+
+- ***todo: will be adapting into a tutorial how-to project***
 
 ## To begin with
 
