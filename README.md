@@ -128,7 +128,30 @@
     - watchFiles may detect changes and runs associated tasks,
     - if so, web server is restarted
 
-## Project Expectations:    
+## Project Phases:    
+
+### Prep for project:
+
+- reviewed...
+  - project instructions and exceeds speqs.
+  - Gulp Basics course, Gulp UseRef workshop and SCRUM course
+  - and project files
+
+
+### Setup build process and development work-flow using:
+
+- Lastest versions Node.js, NPM and Gulp v4.0.0
+
+- Decided on gulp modules  
+  - del - deletes files and folders
+  - gulp-sass - compiles sass into css
+  - gulp-sourcemaps - create a map, track styles to location in sass file
+  - gulp-rename - rename files
+  - gulp-uglify - minify js files
+  - gulp-csso - minify css files
+  - gulp-concat - string together multiple files
+  - gulp-imagemin - compress jpeg and png files
+  - gulp-connect - runs a web server with live-reload
 
 ### Setup build and development workflow using the following gulp tasks:
 
@@ -167,25 +190,3 @@
 
 - clean
   - dels ./dist folder and anything it
-
-### Setup build process and development work-flow using:
-
-- Lastest versions Node.js, NPM and Gulp v4.0.0
-
-- Decided on gulp modules  
-  - del - deletes files and folders
-  - gulp-sass - compiles sass into css
-  - gulp-sourcemaps - create a map, track styles to location in sass file
-  - gulp-rename - rename files
-  - gulp-uglify - minify js files
-  - gulp-csso - minify css files
-  - gulp-concat - string together multiple files
-  - gulp-imagemin - compress jpeg and png files
-  - gulp-connect - runs a web server with live-reload
-
-### Prep for project:
-
-- reviewed...
-  - project instructions and exceeds speqs.
-  - Gulp Basics course, Gulp UseRef workshop and SCRUM course
-  - and project files
