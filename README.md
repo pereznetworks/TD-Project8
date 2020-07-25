@@ -85,8 +85,8 @@
     - in their latest version
 
 - using gulp.connect to run a live-reload server
-  - no longer using gulp.server, haven't fixed gulp.util issues yet
-    - plus, I understand it's syntax better
+  - at the time, gulp.server was problematic, since gulp.util issues had not been fixed yet
+    - plus, I understand gulp.connect syntax better
 
 - had to switch from gulp-useref to gulp-concat
   - gulp-useref does not seem to pick up the build tags in the html file
