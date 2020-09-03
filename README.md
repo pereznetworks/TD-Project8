@@ -34,8 +34,7 @@
     - to get the environment versions of gulp-cli in alignment with all packages that come with gulp.
 
     - `npm i -g gulp-cli`
-
-## After that a simple `npm install`, should get everything else to work...
+- After that a simple `npm install`, should get everything else to work...
 
 ## CHANGES:
 
