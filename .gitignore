@@ -1,6 +1,9 @@
 # on macOS filesystems ignore .DS_Store
 **/.DS_Store
 
+# text files
+*.txt
+
 # Logs
 logs
 *.log
